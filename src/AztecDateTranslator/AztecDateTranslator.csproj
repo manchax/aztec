@@ -64,4 +64,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\AztecDateTranslator.Shared\AztecDateTranslator.Shared.csproj" />
+	</ItemGroup>
+
 </Project>
