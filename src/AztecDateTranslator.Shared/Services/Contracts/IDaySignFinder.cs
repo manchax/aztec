@@ -6,5 +6,11 @@ using AztecDateTranslator.Shared.Entities;
 /// </summary>
 public interface IDaySignTranslator
 {
+    /// <summary>
+    /// Gets the <see cref="DaySign"/> which corresponds
+    /// to the given <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns></returns>
     DaySign GetMoonDate(DateTime date);
 }

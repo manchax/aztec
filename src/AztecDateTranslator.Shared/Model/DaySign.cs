@@ -10,11 +10,20 @@ public class DaySign : BaseEntity
     [Key]
     public int ID { get; set; }
 
+    /// <summary>
+    /// There are 20 days used in both calendars.
+    /// </summary>
     public byte DayNumber { get; set; }
 
+    /// <summary>
+    /// The element associated to this day.
+    /// </summary>
     public Naguales Nagual { get; set; }
 
     public string Nahuatl { get; set; }
+        = string.Empty;
+
+    public string Mayan { get; set; }
         = string.Empty;
 
     public string Spanish { get; set; }
@@ -22,7 +31,6 @@ public class DaySign : BaseEntity
 
     public string English { get; set; }
         = string.Empty;
-
     /// <summary>
     /// Náhuatl name of Aztec deity associated to this day.
     /// </summary>
