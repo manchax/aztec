@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace AztecDateTranslator.Shared.Entities;
 
 /// <summary>
@@ -5,17 +7,20 @@ namespace AztecDateTranslator.Shared.Entities;
 /// </summary>
 public class DaySign : BaseEntity
 {
-    public Naguales Nagual { get; set; }
+    [Key]
+    public int ID { get; set; }
 
     public byte DayNumber { get; set; }
 
-    public string NahuatlName { get; set; }
+    public Naguales Nagual { get; set; }
+
+    public string Nahuatl { get; set; }
         = string.Empty;
 
-    public string SpanishName { get; set; }
+    public string Spanish { get; set; }
         = string.Empty;
 
-    public string EnglishName { get; set; }
+    public string English { get; set; }
         = string.Empty;
 
     /// <summary>
