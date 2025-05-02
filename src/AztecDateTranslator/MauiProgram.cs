@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AztecDateTranslator.Shared;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace AztecDateTranslator
 {
@@ -18,6 +20,9 @@ namespace AztecDateTranslator
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            // builder.AddLogging(options => options.AddDebug())
+            builder.Services.AddPooledDbContextFactory<AztecContext>(options =>
+                options.UseSqlite($"Data Source={AztecContext.DbPath}"));
 
             return builder.Build();
         }
