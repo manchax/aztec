@@ -26,7 +26,21 @@ public partial class AztecContext
             Nahuatl = "Calli",
             Spanish = "Casa",
             English = "House"
-        }
+        },
+        new DaySign {
+            DayNumber = 4,
+            Nagual = Naguales.Lizard,
+            Nahuatl = "Cuetzpallin",
+            Spanish = "Lagartija",
+            English = "Lizard"
+        },
+        new DaySign {
+            DayNumber = 5,
+            Nagual = Naguales.Serpent,
+            Nahuatl = "Cóatl",
+            Spanish = "Serpiente",
+            English = "Serpent"
+        },
     ];
 
     private void AddDaySigns(DbContext dbContext)

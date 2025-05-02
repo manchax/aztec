@@ -31,6 +31,7 @@ public class DaySign : BaseEntity
 
     public string English { get; set; }
         = string.Empty;
+
     /// <summary>
     /// Náhuatl name of Aztec deity associated to this day.
     /// </summary>
