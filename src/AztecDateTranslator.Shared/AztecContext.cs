@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AztecDateTranslator.Shared;
 
-public class AztecContext : DbContext
+public partial class AztecContext : DbContext
 {
     private static readonly string _dbPath;
 
@@ -34,41 +34,5 @@ public class AztecContext : DbContext
             });
 
         base.OnConfiguring(options);
-    }
-
-    private void AddDaySigns(DbContext dbContext)
-    {
-        var dbSet = dbContext.Set<DaySign>();
-        dbSet.AddRange([
-            new DaySign
-            {
-                DayNumber = 1,
-                Nagual = Naguales.Alligator,
-                Nahuatl = "Cipactli",
-                Spanish = "Cocodrilo",
-                English = "Alligator"
-            },
-            new DaySign
-            {
-                DayNumber = 2,
-                Nagual = Naguales.Wind,
-                Nahuatl = "Ehécatl",
-                Spanish = "Cocodrilo",
-                English = "Alligator"
-            },
-            new DaySign{
-                DayNumber = 3,
-                Nagual = Naguales.House,
-                Nahuatl = "Calli",
-                Spanish = "Casa",
-                English = "House"
-            }
-        ]);
-    }
-
-    private async Task AddDaySignsAsync(DbContext dbContext)
-    {
-        var dbSet = dbContext.Set<DaySign>();
-        await dbSet.AddRangeAsync([]);
     }
 }
