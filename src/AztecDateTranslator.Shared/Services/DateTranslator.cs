@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace AztecDateTranslator.Shared.Services;
 
-public class DaySignFinder : IDaySignTranslator
+public class DateTranslator : IDateTranslator
 {
     //private readonly IDbContextFactory<AztecContext> _dbContextFactory;
 
@@ -15,18 +15,27 @@ public class DaySignFinder : IDaySignTranslator
     //}
 
     private AztecContext _context;
-    public DaySignFinder(AztecContext dbContext)
+
+    public DateTranslator(AztecContext dbContext)
     {
         _context = dbContext;
     }
 
-    public Tonalpohualli GetTzolkinDate(DateTime date)
+    public int Xiuhpohualli(DateTime date)
     {
-        decimal dayCount = CountDaysByYear(date)
-            + CountDaysByMonth(date)
-            + date.Day;
+        var dayCount = GetDayCount(date) / 360m;
+        var fraction = dayCount - decimal.Truncate(dayCount);
+        var position = fraction switch
+        {
+            0 => 360,
+            _ => Convert.ToInt32(fraction * 360m)
+        };
+        return position;
+    }
 
-        dayCount /= 260m;
+    public Tonalpohualli Tonalpohualli(DateTime date)
+    {
+        var dayCount = GetDayCount(date) / 260m;
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
@@ -55,6 +64,13 @@ public class DaySignFinder : IDaySignTranslator
             throw new ArithmeticException("Invalid result");
         }
         return FindDaySign(position, specialDays.Contains(position));
+    }
+
+    private decimal GetDayCount(DateTime date)
+    {
+        return CountDaysByYear(date)
+            + CountDaysByMonth(date)
+            + date.Day;
     }
 
     private Tonalpohualli FindDaySign(int position, bool isSpecial)
@@ -118,21 +134,15 @@ public class DaySignFinder : IDaySignTranslator
     }
 
     private int CountDaysByYear(DateTime date)
-    {
+    {        
         var startDate = new DateTime(1900, 1, 1);
-        int year = date.Year;
-        int diffYears = year - startDate.Year;
+        int diffYears = date.Year - startDate.Year;
         int result = 0;
         for (int i = 0; i < diffYears; i++)
         {
             result += IsDayAdded(startDate.Year + i) ? 366 : 365;
         }
-
         return result;
-
-        bool IsDayAdded(int year)
-        {
-            return DateTime.IsLeapYear(year + 1);
-        }
+        bool IsDayAdded(int year) => DateTime.IsLeapYear(year + 1);
     }
 }

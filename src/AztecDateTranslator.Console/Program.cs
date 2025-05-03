@@ -1,32 +1,65 @@
 ﻿using AztecDateTranslator.Shared;
 using AztecDateTranslator.Shared.Services;
 
-File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
-var context = new AztecContext();
-context.Database.EnsureCreated();
-
-var finder = new DaySignFinder(context);
-
-// Convert(new DateTime(1960, 1, 19));
-// Convert(new DateTime(1983, 5, 19));
 var now = DateTime.Now.Date;
-var days = DateTime.DaysInMonth(now.Year, now.Month);
-var date = new DateTime(now.Year, now.Month, 1);
-for (int i = 0; i < days; i++)
-{
-    Convert(date);
-    date = date.AddDays(1);
+var month = now.Month;
+// File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
+using var context = new AztecContext();
+// context.Database.EnsureCreated();
+var finder = new DateTranslator(context);
+var date = new DateTime(1900, 1, 1);
+while (await PrintTable(date))
+{ 
+    date = date.AddMonths(1);
 }
 
-context.Dispose();
-Console.ReadKey();
-
-void Convert(DateTime date)
+async Task<bool> PrintTable(DateTime date)
 {
-    var sign = finder.GetTzolkinDate(date);
-    Console.WriteLine("{4, 25} | {0,3} - {1, -15} | {2, -10} | {3, -10} | {6,3} | {5}",
+    PrintHeader();
+    var days = DateTime.DaysInMonth(date.Year, date.Month);
+    for (int i = 0; i < days; i++)
+    {
+        await Convert(date);
+        date = date.AddDays(1);
+    }
+
+    Console.WriteLine("Press Q to exit or any other key to continue...");
+    var key = Console.ReadKey();
+    if (key.Key == ConsoleKey.Q)
+    {
+        context.Dispose();
+        return false;
+    }
+
+    Console.Clear();
+    return true;
+}
+
+static void PrintHeader()
+{
+    Console.WriteLine("{0, -30} | {1, -21} | {2, -10} | {3, -10} | {4} | {5} | {6} ",
+        "               Date", "Tonalpohualli", "Maya", "Nahual",
+        "Tzolkin #", // 4
+        "Special?", "Xiuhpohualli");
+    Console.WriteLine($"{new string([.. Enumerable.Repeat('-', 125)])}");
+}
+
+async Task Convert(DateTime date)
+{
+    var t1 = Task.Run(() => finder.Tonalpohualli(date));
+    var t2 = Task.Run(() => finder.Xiuhpohualli(date));
+
+    await Task.WhenAll(t1, t2);
+
+    var sign = t1.Result;
+    var solar = t2.Result;
+    Console.WriteLine("{4, 30} | {0,3} - {1, -15} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {7}",
         sign.HeavenNumber,
-        sign.DaySign!.Nahuatl, sign.DaySign.Mayan, sign.DaySign.Spanish,
-        date.Date.ToLongDateString(), sign.IsSpecial ? 'Y' : 'N',
-        sign.TzolkinPosition);
+        sign.DaySign!.Nahuatl,
+        sign.DaySign.Mayan, // 2
+        sign.DaySign.Spanish, // 3
+        date.Date.ToLongDateString(), // 4
+        sign.IsSpecial ? 'Y' : 'N', // 5
+        sign.TzolkinPosition /* 6 */,
+        solar);
 }

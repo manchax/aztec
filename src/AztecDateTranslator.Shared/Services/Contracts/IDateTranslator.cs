@@ -4,12 +4,14 @@ using AztecDateTranslator.Shared.Model;
 /// <summary>
 /// 
 /// </summary>
-public interface IDaySignTranslator
+public interface IDateTranslator
 {
     /// <summary>
     /// Gets the <see cref="DaySign"/> which corresponds
     /// to the given <paramref name="date"/>.
     /// </summary>
     /// <returns>Tzolkin day.</returns>
-    Tonalpohualli GetTzolkinDate(DateTime date);
+    Tonalpohualli Tonalpohualli(DateTime date);
+
+    int Xiuhpohualli(DateTime date);
 }
