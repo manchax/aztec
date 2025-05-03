@@ -34,14 +34,30 @@ public class DaySignFinder : IDaySignTranslator
             _ => Convert.ToInt32(fraction * 260m)
         };
 
+        int[] specialDays = [
+            1, 20,
+            22, 39,
+            43, 50, 51, 58,
+            64, 69, 72, 77,
+            85, 88, 93, 96,
+            106, 107, 108, 109, 110, 111, 112, 113, 114, 115];
+
+        specialDays = [.. specialDays,
+            146, 147, 148, 149, 150, 151, 152, 153, 154, 155,
+            165, 168, 173, 176,
+            184, 189, 192, 197,
+            203, 210, 211, 218,
+            222, 239,
+            241, 260];
+
         if (position < 1 || position > 260)
         {
             throw new ArithmeticException("Invalid result");
         }
-        return FindDaySign(position);
+        return FindDaySign(position, specialDays.Contains(position));
     }
 
-    private Tonalpohualli FindDaySign(int position)
+    private Tonalpohualli FindDaySign(int position, bool isSpecial)
     {
         int veintena = 1;
         int trecena = 1;
@@ -66,15 +82,17 @@ public class DaySignFinder : IDaySignTranslator
         DaySign sign;
         //using (var dbContext = _dbContextFactory.CreateDbContext())
         //{
-            sign = _context.DaySigns
-                .Where(d => d.DayNumber == veintena)
-                .First();
+        sign = _context.DaySigns
+            .Where(d => d.DayNumber == veintena)
+            .First();
         //}
 
         return new Tonalpohualli
         {
             HeavenNumber = (byte)trecena,
             DaySign = sign,
+            IsSpecial = isSpecial,
+            TzolkinPosition = position,
         };
     }
 
