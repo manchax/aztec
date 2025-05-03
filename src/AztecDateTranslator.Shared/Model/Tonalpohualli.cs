@@ -39,4 +39,8 @@ public class Tonalpohualli
     /// 20 glyphs
     /// </summary>
     public DaySign? DaySign { get; set; }
+
+    public int TzolkinPosition { get; set; }
+
+    public bool IsSpecial { get; set; }
 }
