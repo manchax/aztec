@@ -1,8 +1,8 @@
 using AztecDateTranslator.Shared.Entities;
+using AztecDateTranslator.Shared.Model;
 
 /// <summary>
-/// Defines the contract to find a Tzolkin position
-/// from a Gregorian date.
+/// 
 /// </summary>
 public interface IDaySignTranslator
 {
@@ -10,7 +10,6 @@ public interface IDaySignTranslator
     /// Gets the <see cref="DaySign"/> which corresponds
     /// to the given <paramref name="date"/>.
     /// </summary>
-    /// <param name="date"></param>
-    /// <returns></returns>
-    DaySign GetMoonDate(DateTime date);
+    /// <returns>Tzolkin day.</returns>
+    Tonalpohualli GetTzolkinDate(DateTime date);
 }

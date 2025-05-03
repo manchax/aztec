@@ -19,8 +19,8 @@ public partial class AztecContext
             Nagual = Naguales.Wind,
             Nahuatl = "Ehécatl",
             Mayan = "Ik",
-            Spanish = "Cocodrilo",
-            English = "Alligator"
+            Spanish = "Viento",
+            English = "Wind"
         },
         new DaySign {
             DayNumber = 3,
