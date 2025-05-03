@@ -24,12 +24,12 @@ public partial class AztecContext : DbContext
             .EnableSensitiveDataLogging()
             .UseSeeding((context, _) =>
             {
-                AddDaySigns(context);
+                AddDaySigns(context.Set<DaySign>());
                 context.SaveChanges();
             })
             .UseAsyncSeeding(async (context, _, cancellationToken) =>
             {
-                await AddDaySignsAsync(context);
+                await AddDaySignsAsync(context.Set<DaySign>());
                 await context.SaveChangesAsync(cancellationToken);
             });
 

@@ -168,15 +168,9 @@ public partial class AztecContext
         }
     ];
 
-    private void AddDaySigns(DbContext dbContext)
-    {
-        var dbSet = dbContext.Set<DaySign>();
-        dbSet.AddRange(_signs);
-    }
+    private void AddDaySigns(DbSet<DaySign> dbSet)
+        => dbSet.AddRange(_signs);
 
-    private async Task AddDaySignsAsync(DbContext dbContext)
-    {
-        var dbSet = dbContext.Set<DaySign>();
-        await dbSet.AddRangeAsync(_signs);
-    }
+    private async Task AddDaySignsAsync(DbSet<DaySign> dbSet)
+        => await dbSet.AddRangeAsync(_signs);
 }
