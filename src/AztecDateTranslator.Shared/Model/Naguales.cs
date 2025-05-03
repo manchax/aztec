@@ -2,7 +2,7 @@
 
 public enum Naguales
 {
-    Alligator,
+    Alligator = 1,
     Wind,
     House,
     Lizard,
@@ -10,7 +10,7 @@ public enum Naguales
     Death,
     Deer,
     Rabbit,
-    Water = 8,
+    Water,
     Dog,
     Monkey,
     Grass,
