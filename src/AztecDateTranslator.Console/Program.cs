@@ -9,10 +9,13 @@ var finder = new DaySignFinder(context);
 
 // Convert(new DateTime(1960, 1, 19));
 // Convert(new DateTime(1983, 5, 19));
-
-for (int i = 0; i < 20; i++)
+var now = DateTime.Now.Date;
+var days = DateTime.DaysInMonth(now.Year, now.Month);
+var date = new DateTime(now.Year, now.Month, 1);
+for (int i = 0; i < days; i++)
 {
-    Convert(DateTime.Now.Date.AddDays(i));
+    Convert(date);
+    date = date.AddDays(1);
 }
 
 context.Dispose();
@@ -21,7 +24,9 @@ Console.ReadKey();
 void Convert(DateTime date)
 {
     var sign = finder.GetTzolkinDate(date);
-    Console.WriteLine("{4}: {0,3} - {1}\t\t{2}\t{3}", sign.HeavenNumber,
+    Console.WriteLine("{4, 25} | {0,3} - {1, -15} | {2, -10} | {3, -10} | {6,3} | {5}",
+        sign.HeavenNumber,
         sign.DaySign!.Nahuatl, sign.DaySign.Mayan, sign.DaySign.Spanish,
-        date.Date.ToLongDateString());
+        date.Date.ToLongDateString(), sign.IsSpecial ? 'Y' : 'N',
+        sign.TzolkinPosition);
 }
