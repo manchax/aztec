@@ -8,6 +8,8 @@ public class Cempohuallapohualli
 
     public string Name { get; set; } = string.Empty;
 
+    public string Maya { get; set; } = string.Empty;
+
     public string Description { get; set; } = string.Empty;
 
     public string Deity { get; set; } = string.Empty;

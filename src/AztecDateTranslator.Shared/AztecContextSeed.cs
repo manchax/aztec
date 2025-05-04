@@ -171,115 +171,115 @@ public partial class AztecContext
 
     private readonly IEnumerable<Cempohuallapohualli> _months = [
         new Cempohuallapohualli {
-            Number = 1,
-            Name = "Cuahuitlehua",
+            Number = 0,
+            Name = "Cuahuitlehua", Maya = "Pop",
             Description = "",
             Deity = "Tláloc"
         },
         new Cempohuallapohualli {
-            Number = 2,
-            Name = "Cuahuitlehua",
+            Number = 1,
+            Name = "Cuahuitlehua", Maya = "Uo",
             Description = "",
             Deity = "Xipe Tótec"
         },
         new Cempohuallapohualli {
-            Number = 3,
-            Name = "Tozoztontli",
+            Number = 2,
+            Name = "Tozoztontli", Maya = "Zotz",
             Description = "",
             Deity = "Coatlicue"
         },
         new Cempohuallapohualli {
-            Number = 4,
-            Name = "Huey Tozoztli",
+            Number = 3,
+            Name = "Huey Tozoztli", Maya = "Xul",
             Description = "",
             Deity = "Cintéotl-Chicomecóatl"
         },
         new Cempohuallapohualli {
-            Number = 5,
-            Name = "Tóxcatl",
+            Number = 4,
+            Name = "Tóxcatl", Maya = "Xul",
             Description = "",
             Deity = "Tezcatlipoca-Huitzilopochtli"
         },
         new Cempohuallapohualli {
-            Number = 6,
-            Name = "Etzalcualiztli",
+            Number = 5,
+            Name = "Etzalcualiztli", Maya = "Yaxkin",
             Description = "",
             Deity = "Tláloc"
         },
         new Cempohuallapohualli {
-            Number = 7,
-            Name = "Tecuilhuitontli",
+            Number = 6,
+            Name = "Tecuilhuitontli", Maya = "Mol",
             Description = "",
             Deity = "Huixtocíhuatl"
         },
         new Cempohuallapohualli {
-            Number = 8,
-            Name = "Huey Tecuilhuitl",
+            Number = 7,
+            Name = "Huey Tecuilhuitl", Maya = "",
             Description = "",
             Deity = "Xilonen-Xochipilli"
         },
         new Cempohuallapohualli {
-            Number = 9,
-            Name = "Tlaxochimaco",
+            Number = 8,
+            Name = "Tlaxochimaco", Maya = "",
             Description = "",
             Deity = "Huitzilopochtli-Mictlantecuhtli"
         },
         new Cempohuallapohualli {
-            Number = 10,
-            Name = "Xocotlhuetzi",
+            Number = 9,
+            Name = "Xocotlhuetzi", Maya = "",
             Description = "",
             Deity = "Xiuhtecuhtli-Yacatecuhtl-Mictlantecuhtli"
         },
         new Cempohuallapohualli {
-            Number = 11,
-            Name = "Ochpaniztli",
+            Number = 10,
+            Name = "Ochpaniztli", Maya = "",
             Description = "Atlatonan-Chicomecóatl-Toci",
             Deity = ""
         },
         new Cempohuallapohualli {
+            Number = 11,
+            Name = "Teotleco", Maya = "Ceh",
+            Description = "",
+            Deity = ""
+        },
+        new Cempohuallapohualli {
             Number = 12,
-            Name = "Teotleco",
+            Name = "Tepeilhuitl", Maya = "Mac",
             Description = "",
             Deity = ""
         },
         new Cempohuallapohualli {
             Number = 13,
-            Name = "Tepeilhuitl",
-            Description = "",
-            Deity = ""
-        },
-        new Cempohuallapohualli {
-            Number = 14,
-            Name = "Quecholli",
+            Name = "Quecholli", Maya = "Kankin",
             Description = "",
             Deity = "Mixcóatl"
         },
         new Cempohuallapohualli {
-            Number = 15,
-            Name = "Panquetzaliztli",
+            Number = 14,
+            Name = "Panquetzaliztli", Maya = "Muwan",
             Description = "",
             Deity = "Huitzilopochtli"
         },
         new Cempohuallapohualli {
-            Number = 16,
-            Name = "Atemoztli",
+            Number = 15,
+            Name = "Atemoztli", Maya = "Pax",
             Description = "",
             Deity = "Tláloc"
         },
         new Cempohuallapohualli {
-            Number = 17,
-            Name = "Títitl",
+            Number = 16,
+            Name = "Títitl", Maya = "Kayab",
             Description = "",
             Deity = "Ilamatecuhtli-Mixcóatl"
         },
         new Cempohuallapohualli {
-            Number = 18,
-            Name = "Izcalli",
+            Number = 17,
+            Name = "Izcalli", Maya = "Cumkú",
             Description = "",
             Deity = "Xiuhtecutli"
         },
         new Cempohuallapohualli {
-            Number = 19,
+            Number = 18,
             Name = "Nemontemi",
             Description = "",
             Deity = ""

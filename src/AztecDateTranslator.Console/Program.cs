@@ -13,10 +13,13 @@ File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
 using var context = new AztecContext();
 context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
-var date = DateTime.Now.Date;
+var now = DateTime.Now.Date;
+var date = new DateTime(now.Year, now.Month, 1);
+    // new DateTime(1983, 5, 19);
     /*new DateTime(2025, 8, 1)*/;
+
 while (await PrintTable(date))
-{ 
+{
     date = date.AddMonths(1);
 }
 
@@ -60,13 +63,16 @@ async Task Convert(DateTime date)
     var sign = t1.Result;
     var solar = t2.Result;
 
-    Console.WriteLine("{4, 30} | {0,3} {1, -14}  | {8,3} {7,-16} | {2, -10} | {3, -10} | {6, 9} | {5, 8}",
-        sign.HeavenNumber,
-        sign.DaySign!.Nahuatl,
-        sign.DaySign.Mayan, // 2
-        sign.DaySign.Spanish, // 3
+    Console.WriteLine(
+        "{4, 30} | {0,3} {1, -14} | {8,3} {7,-16} | {2, -10} | {3, -10} | {6, 9} | {5, 8}",
+        sign.HeavenNumber, // 0
+        sign.DaySign!.Nahuatl, //1
+        // sign.DaySign.Mayan,  // 2
+        solar.mes.Maya,
+        sign.DaySign.Spanish,     // 3
         date.Date.ToLongDateString(), // 4
-        sign.IsSpecial ? 'Y' : 'N', // 5
-        sign.TzolkinPosition /* 6 */,
-        solar.mes.Name, solar.dia);
+        sign.IsSpecial ? 'Y' : 'N',         // 5
+        sign.TzolkinPosition,                       // 6,
+        solar.mes.Name + $" ({solar.mes.Number})", // 7
+        solar.dia - 1); // 8
 }
