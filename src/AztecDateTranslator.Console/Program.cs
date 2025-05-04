@@ -9,9 +9,9 @@ using AztecDateTranslator.Shared.Services;
 //}
 //var month = now.Month;
 
-File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
+// File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
 using var context = new AztecContext();
-context.Database.EnsureCreated();
+// context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
 var now = DateTime.Now.Date;
 var date = new DateTime(now.Year, now.Month, 1);
