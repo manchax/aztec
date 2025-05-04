@@ -32,35 +32,30 @@ public class DateTranslator : IDateTranslator
     public (Cempohuallapohualli mes, int dia)
         Xiuhpohualli(DateTime date)
     {
-        var dayCount = GetDayCount(date, false) / 360m; // tun
-        var fraction = dayCount - decimal.Truncate(dayCount);
+        var dayCount = GetDayCount(date, tzolkin: false);
+        var tuns =  dayCount / 360m;
+        Debug.WriteLine($"Tun count (solar) is: {tuns}");
+        var fraction = tuns - decimal.Truncate(tuns);
         var position = fraction switch
         {
             0 => 360, // last position
-            _ => fraction * 360m
+            _ => (int)Math.Round(fraction * 360m)
         };
         Debug.WriteLine($"Position: {position}");
+
         var mes = position / 20m; // 20 days each month
         fraction = mes - decimal.Truncate(mes);
-        
         var iMes = Convert.ToInt32(
             Math.Round(mes));
-
         if (iMes == 0)
         {
             iMes = 18;
         }
-
-        //if (iMes < 1)
-        //{
-        //    iMes = 18 + iMes;
-        //}
-        // Debug.WriteLine($"{iMes} {day}");
-
+        
         var month = _months.Where(m => m.Number == iMes)
             .First();
+        var day = (int)Math.Round(position % 20m);
 
-        var day = (int)Math.Round(fraction * 20m); /*(int)Math.Round(position % 20m)*/
         return (month, day);
     }
 
@@ -103,7 +98,7 @@ public class DateTranslator : IDateTranslator
     /// <param name="date"></param>
     /// <param name="tzolkin"></param>
     /// <returns></returns>
-    private decimal GetDayCount(DateTime date, bool tzolkin = true) 
+    private int GetDayCount(DateTime date, bool tzolkin = true) 
         => CountDaysByYear(date) + (tzolkin
         ? TzolkinDayCountByMonth(date)
         : TunDayCountByMonth(date)) + date.Day;
