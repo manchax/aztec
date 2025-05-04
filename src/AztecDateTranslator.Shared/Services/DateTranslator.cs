@@ -36,13 +36,12 @@ public class DateTranslator : IDateTranslator
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
-            360 => 0,
+            0 => 360,
             _ => fraction * 360m + 1
         };
         // Debug.WriteLine($"Position: {position}");
         var mes = position / 20m;
         fraction = mes - decimal.Truncate(mes);
-        var day = (int)Math.Round(position % 20m);
         var iMes = Convert.ToInt32(Math.Truncate(mes)) - 3;
         if (iMes < 1)
         {
@@ -51,6 +50,7 @@ public class DateTranslator : IDateTranslator
         // Debug.WriteLine($"{iMes} {day}");
         var month = _months.Where(m => m.Number == iMes)
             .First(); 
+        var day = (int)Math.Round(position % 20m);
         return (month, day);
     }
 
