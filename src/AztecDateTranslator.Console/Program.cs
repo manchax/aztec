@@ -48,7 +48,7 @@ async Task<bool> KeepGoing(DateTime date)
 
 static void PrintHeader()
 {
-    Console.WriteLine("{0, -30} | {1, -18}  | {6,-20} | {2, -10} | {3, -10} | {4} | {5}",
+    Console.WriteLine("{0, -30} | {1, -18} | {2, -10} | {3, -10} | {4} | {5} | {6,-20}",
         "               Date", "Tonalpohualli", "Maya", "Nahual",
         "Tzolkin #", // 4
         "Special?", "Xiuhpohualli");
@@ -65,15 +65,15 @@ async Task Convert(DateTime date)
     var solar = t2.Result;
 
     Console.WriteLine(
-        "{4, 30} | {0,3} {1, -14} | {8,3} {7,-16} | {2, -10} | {3, -10} | {6, 9} | {5, 8}",
+        "{4, 30} | {0,3} {1, -14} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {8,3} {7,-16}",
         sign.HeavenNumber, // 0
         sign.DaySign!.Nahuatl, //1
         // sign.DaySign.Mayan,  // 2
-        solar.mes.Maya,
+        sign.DaySign.Mayan,
         sign.DaySign.Spanish,     // 3
         date.Date.ToLongDateString(), // 4
         sign.IsSpecial ? 'Y' : 'N',         // 5
         sign.TzolkinPosition,                       // 6,
         solar.mes.Name + $" ({solar.mes.Number})", // 7
-        solar.dia - 1); // 8
+        solar.dia); // 8
 }

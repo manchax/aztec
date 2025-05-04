@@ -36,21 +36,31 @@ public class DateTranslator : IDateTranslator
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
-            0 => 360,
-            _ => fraction * 360m + 1
+            0 => 360, // last position
+            _ => fraction * 360m
         };
-        // Debug.WriteLine($"Position: {position}");
-        var mes = position / 20m;
+        Debug.WriteLine($"Position: {position}");
+        var mes = position / 20m; // 20 days each month
         fraction = mes - decimal.Truncate(mes);
-        var iMes = Convert.ToInt32(Math.Truncate(mes)) - 3;
-        if (iMes < 1)
+        
+        var iMes = Convert.ToInt32(
+            Math.Round(mes));
+
+        if (iMes == 0)
         {
-            iMes = 18 + iMes;
+            iMes = 18;
         }
+
+        //if (iMes < 1)
+        //{
+        //    iMes = 18 + iMes;
+        //}
         // Debug.WriteLine($"{iMes} {day}");
+
         var month = _months.Where(m => m.Number == iMes)
-            .First(); 
-        var day = (int)Math.Round(position % 20m);
+            .First();
+
+        var day = (int)Math.Round(fraction * 20m); /*(int)Math.Round(position % 20m)*/
         return (month, day);
     }
 
