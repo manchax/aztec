@@ -37,4 +37,7 @@ public class DaySign : BaseEntity
     /// </summary>
     public string AztecDeity { get; set; }
         = string.Empty;
+
+    public string Description { get; set; }
+        = string.Empty;
 }

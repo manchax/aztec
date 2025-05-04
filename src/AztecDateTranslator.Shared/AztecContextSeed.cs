@@ -14,7 +14,8 @@ public partial class AztecContext
             Mayan = "Imix",
             Spanish = "Cocodrilo",
             English = "Alligator",
-            AztecDeity = ""
+            AztecDeity = "Tonacatecuhtli",
+            Description = "dios de la procreación"
         },
         new DaySign {
             DayNumber = 2,
@@ -23,7 +24,8 @@ public partial class AztecContext
             Mayan = "Ik",
             Spanish = "Viento",
             English = "Wind",
-            AztecDeity = ""
+            AztecDeity = "Ehécatl",
+            Description = "dios del viento"
         },
         new DaySign {
             DayNumber = 3,
@@ -32,7 +34,8 @@ public partial class AztecContext
             Mayan = "Akbal",
             Spanish = "Casa",
             English = "House",
-            AztecDeity = ""
+            AztecDeity = "Tepeyollotl",
+            Description = "corazón de la montaña"
         },
         new DaySign {
             DayNumber = 4,
@@ -41,7 +44,8 @@ public partial class AztecContext
             Mayan = "Kan",
             Spanish = "Lagartija",
             English = "Lizard",
-            AztecDeity = ""
+            AztecDeity = "Huehuecoyotl",
+            Description = "dios de la danza"
         },
         new DaySign {
             DayNumber = 5,
@@ -50,7 +54,8 @@ public partial class AztecContext
             Mayan = "Chicchan",
             Spanish = "Serpiente",
             English = "Serpent",
-            AztecDeity = ""
+            AztecDeity = "Chalchiuhtlicue",
+            Description = "diosa del agua"
         },
         new DaySign {
             DayNumber = 6,
@@ -59,7 +64,8 @@ public partial class AztecContext
             Mayan = "Cimi",
             Spanish = "Muerte",
             English = "Death",
-            AztecDeity = ""
+            AztecDeity = "Tecciztécatl",
+            Description = "diosa de la luna"
         },
         new DaySign {
             DayNumber = 7,
@@ -68,7 +74,8 @@ public partial class AztecContext
             Mayan = "Manik",
             Spanish = "Venado",
             English = "Deer",
-            AztecDeity = ""
+            AztecDeity = "Tláloc",
+            Description = "dios de la lluvia y de la guerra"
         },
         new DaySign {
             DayNumber = 8,
@@ -77,7 +84,8 @@ public partial class AztecContext
             Mayan = "Lamat",
             Spanish = "Conejo",
             English = "Rabbit",
-            AztecDeity = ""
+            AztecDeity = "Mayahuel",
+            Description = "diosa del pulque"
         },
         new DaySign {
             DayNumber = 9,
@@ -86,7 +94,8 @@ public partial class AztecContext
             Mayan = "Muluc",
             Spanish = "Agua",
             English = "Water",
-            AztecDeity = ""
+            AztecDeity = "Xiuhtecuhtli",
+            Description = "dios del fuego y el tiempo"
         },
         new DaySign {
             DayNumber = 10,
@@ -95,7 +104,8 @@ public partial class AztecContext
             Mayan = "Oc",
             Spanish = "Perro",
             English = "Dog",
-            AztecDeity = ""
+            AztecDeity = "Mictlantecuhtli",
+            Description = "dios de la muerte"
         },
         new DaySign {
             DayNumber = 11,
@@ -104,7 +114,8 @@ public partial class AztecContext
             Mayan = "Chuen",
             Spanish = "Mono",
             English = "Monkey",
-            AztecDeity = ""
+            AztecDeity = "Xochipilli",
+            Description = "dios de las flores"
         },
         new DaySign {
             DayNumber = 12,
@@ -113,7 +124,8 @@ public partial class AztecContext
             Mayan = "Eb",
             Spanish = "Hierba",
             English = "Grass",
-            AztecDeity = ""
+            AztecDeity = "Patécatl",
+            Description = "dios de la medicina"
         },
         new DaySign {
             DayNumber = 13,
@@ -122,7 +134,8 @@ public partial class AztecContext
             Mayan = "Ben",
             Spanish = "Carrizo",
             English = "Reed",
-            AztecDeity = ""
+            AztecDeity = "Tezcatlipoca",
+            Description = "dios de la obscuridad"
         },
         new DaySign {
             DayNumber = 14,
@@ -131,7 +144,8 @@ public partial class AztecContext
             Mayan = "Ix",
             Spanish = "Ocelote",
             English = "Ocelot",
-            AztecDeity = ""
+            AztecDeity = "Tlacolteotl",
+            Description = "diosa del amor y del nacimiento"
         },
         new DaySign {
             DayNumber = 15,
@@ -140,7 +154,8 @@ public partial class AztecContext
             Mayan = "Men",
             Spanish = "Águila",
             English = "Eagle",
-            AztecDeity = ""
+            AztecDeity = "Tezcatlipoca-Xipe Totec",
+            Description = "dios de la obscuridad, dios desollado"
         },
         new DaySign {
             DayNumber = 16,
@@ -149,7 +164,8 @@ public partial class AztecContext
             Mayan = "Cib",
             Spanish = "Buitre",
             English = "Vulture",
-            AztecDeity = ""
+            AztecDeity = "Itzpapalotl",
+            Description = "mariposa de obsidiana"
         },
         new DaySign {
             DayNumber = 17,
@@ -158,7 +174,8 @@ public partial class AztecContext
             Mayan = "Caban",
             Spanish = "Movimiento",
             English = "Movement",
-            AztecDeity = ""
+            AztecDeity = "Xolotl-Nanahuatzin",
+            Description = "mounstro con cabeza de perro, sol"
         },
         new DaySign {
             DayNumber = 18,
@@ -167,7 +184,8 @@ public partial class AztecContext
             Mayan = "Etznab",
             Spanish = "Cuchillo",
             English = "Knife",
-            AztecDeity = ""
+            AztecDeity = "Chalchiuhtotolin",
+            Description = "dios guajolote y una variante de Tezcatlipoca como pájaro"
         },
         new DaySign {
             DayNumber = 19,
@@ -176,7 +194,8 @@ public partial class AztecContext
             Mayan = "Cauac",
             Spanish = "Lluvia",
             English = "Rain",
-            AztecDeity = ""
+            AztecDeity = "Tonatiuh",
+            Description = "dios del sol y de los guerreros"
         },
         new DaySign {
             DayNumber = 20,
@@ -185,7 +204,8 @@ public partial class AztecContext
             Mayan = "Ahau",
             Spanish = "Flor",
             English = "Flower",
-            AztecDeity = ""
+            AztecDeity = "Xochiquetzal",
+            Description = "diosa de las flores"
         }
     ];
 
@@ -198,25 +218,25 @@ public partial class AztecContext
         },
         new Cempohuallapohualli {
             Number = 2,
-            Name = "Cuahuitlehua", Maya = "Uo",
+            Name = "Cuahuitlehua", Maya = "Wo'",
             Description = "",
             Deity = "Xipe Tótec"
         },
         new Cempohuallapohualli {
             Number = 3,
-            Name = "Tozoztontli", Maya = "Zip",
+            Name = "Tozoztontli", Maya = "Sip",
             Description = "",
             Deity = "Coatlicue"
         },
         new Cempohuallapohualli {
             Number = 4,
-            Name = "Huey Tozoztli", Maya = "Sots",
+            Name = "Huey Tozoztli", Maya = "Sotz",
             Description = "",
             Deity = "Cintéotl-Chicomecóatl"
         },
         new Cempohuallapohualli {
             Number = 5,
-            Name = "Tóxcatl", Maya = "Tsek",
+            Name = "Tóxcatl", Maya = "Sek",
             Description = "",
             Deity = "Tezcatlipoca-Huitzilopochtli"
         },
