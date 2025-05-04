@@ -16,9 +16,9 @@ public class DateTranslator : IDateTranslator
     //}
 
     private DateTime _zero = new(1900, 1, 1);
-    
+
     private AztecContext _context;
-    
+
     private IEnumerable<DaySign> _daySigns;
     private IEnumerable<Cempohuallapohualli> _months;
 
@@ -33,7 +33,7 @@ public class DateTranslator : IDateTranslator
         Xiuhpohualli(DateTime date)
     {
         var dayCount = GetDayCount(date, tzolkin: false);
-        var tuns =  dayCount / 360m;
+        var tuns = dayCount / 360m;
         Debug.WriteLine($"Tun count (solar) is: {tuns}");
         var fraction = tuns - decimal.Truncate(tuns);
         var position = fraction switch
@@ -42,21 +42,32 @@ public class DateTranslator : IDateTranslator
             _ => (int)Math.Round(fraction * 360m)
         };
         Debug.WriteLine($"Position: {position}");
+        // var cycleStart = FindNearestCycleStart(date);
 
-        var mes = position / 20m; // 20 days each month
-        fraction = mes - decimal.Truncate(mes);
-        var iMes = Convert.ToInt32(
-            Math.Round(mes));
-        if (iMes == 0)
+        var mes = position / 20; // 20 days each month
+        // fraction = mes - decimal.Truncate(mes);
+        //var iMes = Convert.ToInt32(
+        //    Math.Round(mes));
+        //if (iMes == 0)
+        //{
+        //    iMes = 18;
+        //}
+        if (mes == 0)
         {
-            iMes = 18;
+            //Debugger.Break();
+            mes = 18;
         }
-        
-        var month = _months.Where(m => m.Number == iMes)
+
+        var month = _months.Where(m => m.Number == mes)
             .First();
-        var day = (int)Math.Round(position % 20m);
+        var day = position % 20;
 
         return (month, day);
+    }
+
+    private DateTime FindNearestCycleStart(DateTime date)
+    {
+        return DateTime.Now;
     }
 
     public Tonalpohualli Tonalpohualli(DateTime date)
@@ -98,7 +109,7 @@ public class DateTranslator : IDateTranslator
     /// <param name="date"></param>
     /// <param name="tzolkin"></param>
     /// <returns></returns>
-    private int GetDayCount(DateTime date, bool tzolkin = true) 
+    private int GetDayCount(DateTime date, bool tzolkin = true)
         => CountDaysByYear(date) + (tzolkin
         ? TzolkinDayCountByMonth(date)
         : TunDayCountByMonth(date)) + date.Day;
@@ -109,9 +120,9 @@ public class DateTranslator : IDateTranslator
         int trecena = 1;
         for (int i = 1; i < position; i++)
         {
-//#if DEBUG
-//            Debug.WriteLine("{0} - {1}", trecena, veintena);
-//#endif
+            //#if DEBUG
+            //            Debug.WriteLine("{0} - {1}", trecena, veintena);
+            //#endif
             trecena = trecena switch
             {
                 13 => 1,
@@ -190,7 +201,7 @@ public class DateTranslator : IDateTranslator
     }
 
     private int CountDaysByYear(DateTime date)
-    {        
+    {
         int diffYears = date.Year - _zero.Year;
         int result = 0;
         for (int i = 0; i < diffYears; i++)

@@ -1,5 +1,6 @@
 ﻿using AztecDateTranslator.Shared;
 using AztecDateTranslator.Shared.Services;
+using System.Diagnostics;
 
 //var start = new DateTime(1999, 1, 5);
 //var dates = new List<DateTime>();
@@ -63,7 +64,7 @@ async Task Convert(DateTime date)
     await Task.WhenAll(t1, t2);
     var sign = t1.Result;
     var solar = t2.Result;
-
+    Debug.WriteLine(sign.DaySign.AztecDeity);
     Console.WriteLine(
         "{4, 30} | {0,3} {1, -14} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {8,3} {7,-16}",
         sign.HeavenNumber, // 0
