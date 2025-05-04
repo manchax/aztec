@@ -13,5 +13,5 @@ public interface IDateTranslator
     /// <returns>Tzolkin day.</returns>
     Tonalpohualli Tonalpohualli(DateTime date);
 
-    int Xiuhpohualli(DateTime date);
+    (Cempohuallapohualli mes, int dia) Xiuhpohualli(DateTime date);
 }

@@ -1,4 +1,5 @@
 ﻿using AztecDateTranslator.Shared.Entities;
+using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace AztecDateTranslator.Shared;
@@ -168,9 +169,131 @@ public partial class AztecContext
         }
     ];
 
+    private readonly IEnumerable<Cempohuallapohualli> _months = [
+        new Cempohuallapohualli {
+            Number = 1,
+            Name = "Cuahuitlehua",
+            Description = "",
+            Deity = "Tláloc"
+        },
+        new Cempohuallapohualli {
+            Number = 2,
+            Name = "Cuahuitlehua",
+            Description = "",
+            Deity = "Xipe Tótec"
+        },
+        new Cempohuallapohualli {
+            Number = 3,
+            Name = "Tozoztontli",
+            Description = "",
+            Deity = "Coatlicue"
+        },
+        new Cempohuallapohualli {
+            Number = 4,
+            Name = "Huey Tozoztli",
+            Description = "",
+            Deity = "Cintéotl-Chicomecóatl"
+        },
+        new Cempohuallapohualli {
+            Number = 5,
+            Name = "Tóxcatl",
+            Description = "",
+            Deity = "Tezcatlipoca-Huitzilopochtli"
+        },
+        new Cempohuallapohualli {
+            Number = 6,
+            Name = "Etzalcualiztli",
+            Description = "",
+            Deity = "Tláloc"
+        },
+        new Cempohuallapohualli {
+            Number = 7,
+            Name = "Tecuilhuitontli",
+            Description = "",
+            Deity = "Huixtocíhuatl"
+        },
+        new Cempohuallapohualli {
+            Number = 8,
+            Name = "Huey Tecuilhuitl",
+            Description = "",
+            Deity = "Xilonen-Xochipilli"
+        },
+        new Cempohuallapohualli {
+            Number = 9,
+            Name = "Tlaxochimaco",
+            Description = "",
+            Deity = "Huitzilopochtli-Mictlantecuhtli"
+        },
+        new Cempohuallapohualli {
+            Number = 10,
+            Name = "Xocotlhuetzi",
+            Description = "",
+            Deity = "Xiuhtecuhtli-Yacatecuhtl-Mictlantecuhtli"
+        },
+        new Cempohuallapohualli {
+            Number = 11,
+            Name = "Ochpaniztli",
+            Description = "Atlatonan-Chicomecóatl-Toci",
+            Deity = ""
+        },
+        new Cempohuallapohualli {
+            Number = 12,
+            Name = "Teotleco",
+            Description = "",
+            Deity = ""
+        },
+        new Cempohuallapohualli {
+            Number = 13,
+            Name = "Tepeilhuitl",
+            Description = "",
+            Deity = ""
+        },
+        new Cempohuallapohualli {
+            Number = 14,
+            Name = "Quecholli",
+            Description = "",
+            Deity = "Mixcóatl"
+        },
+        new Cempohuallapohualli {
+            Number = 15,
+            Name = "Panquetzaliztli",
+            Description = "",
+            Deity = "Huitzilopochtli"
+        },
+        new Cempohuallapohualli {
+            Number = 16,
+            Name = "Atemoztli",
+            Description = "",
+            Deity = "Tláloc"
+        },
+        new Cempohuallapohualli {
+            Number = 17,
+            Name = "Títitl",
+            Description = "",
+            Deity = "Ilamatecuhtli-Mixcóatl"
+        },
+        new Cempohuallapohualli {
+            Number = 18,
+            Name = "Izcalli",
+            Description = "",
+            Deity = "Xiuhtecutli"
+        },
+        new Cempohuallapohualli {
+            Number = 19,
+            Name = "Nemontemi",
+            Description = "",
+            Deity = ""
+        }];
+
     private void AddDaySigns(DbSet<DaySign> dbSet)
         => dbSet.AddRange(_signs);
 
     private async Task AddDaySignsAsync(DbSet<DaySign> dbSet)
         => await dbSet.AddRangeAsync(_signs);
+
+    private void AddCempohuallapohuallis(DbSet<Cempohuallapohualli> dbSet)
+        => dbSet.AddRange(_months);
+
+    private async Task AddCempohuallapohuallisAsync(DbSet<Cempohuallapohualli> dbSet)
+        => await dbSet.AddRangeAsync(_months);
 }

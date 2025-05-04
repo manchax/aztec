@@ -1,13 +1,20 @@
 ﻿using AztecDateTranslator.Shared;
 using AztecDateTranslator.Shared.Services;
 
-var now = DateTime.Now.Date;
-var month = now.Month;
-// File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
+//var start = new DateTime(1999, 1, 5);
+//var dates = new List<DateTime>();
+//dates.Add(start);
+//for (var i = 1; i <= 13; i++) { 
+//    dates.Add(start.AddDays(i * 360));
+//}
+//var month = now.Month;
+
+File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
 using var context = new AztecContext();
-// context.Database.EnsureCreated();
+context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
-var date = new DateTime(1900, 1, 1);
+var date = DateTime.Now.Date;
+    /*new DateTime(2025, 8, 1)*/;
 while (await PrintTable(date))
 { 
     date = date.AddMonths(1);
@@ -37,7 +44,7 @@ async Task<bool> PrintTable(DateTime date)
 
 static void PrintHeader()
 {
-    Console.WriteLine("{0, -30} | {1, -21} | {2, -10} | {3, -10} | {4} | {5} | {6} ",
+    Console.WriteLine("{0, -30} | {1, -18}  | {6,-20} | {2, -10} | {3, -10} | {4} | {5}",
         "               Date", "Tonalpohualli", "Maya", "Nahual",
         "Tzolkin #", // 4
         "Special?", "Xiuhpohualli");
@@ -50,10 +57,10 @@ async Task Convert(DateTime date)
     var t2 = Task.Run(() => finder.Xiuhpohualli(date));
 
     await Task.WhenAll(t1, t2);
-
     var sign = t1.Result;
     var solar = t2.Result;
-    Console.WriteLine("{4, 30} | {0,3} - {1, -15} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {7}",
+
+    Console.WriteLine("{4, 30} | {0,3} {1, -14}  | {8,3} {7,-16} | {2, -10} | {3, -10} | {6, 9} | {5, 8}",
         sign.HeavenNumber,
         sign.DaySign!.Nahuatl,
         sign.DaySign.Mayan, // 2
@@ -61,5 +68,5 @@ async Task Convert(DateTime date)
         date.Date.ToLongDateString(), // 4
         sign.IsSpecial ? 'Y' : 'N', // 5
         sign.TzolkinPosition /* 6 */,
-        solar);
+        solar.mes.Name, solar.dia);
 }

@@ -2,6 +2,7 @@
 using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace AztecDateTranslator.Shared.Services;
 
@@ -15,22 +16,35 @@ public class DateTranslator : IDateTranslator
     //}
 
     private AztecContext _context;
+    private IEnumerable<DaySign> _daySigns;
+    private IEnumerable<Cempohuallapohualli> _months;
+
+    private DateTime zero = new(1900, 1, 1);
 
     public DateTranslator(AztecContext dbContext)
     {
         _context = dbContext;
+        _daySigns = _context.DaySigns.AsNoTracking().ToList();
+        _months = _context.Cempohuallapohuallis.AsNoTracking().ToList();
     }
 
-    public int Xiuhpohualli(DateTime date)
+    public (Cempohuallapohualli mes, int dia) Xiuhpohualli(DateTime date)
     {
-        var dayCount = GetDayCount(date) / 360m;
+        var dayCount = GetDayCount(date, false) / 360m;
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
-            0 => 360,
+            360 => 0,
             _ => Convert.ToInt32(fraction * 360m)
         };
-        return position;
+        Debug.WriteLine($"Position: {position}");
+        var mes = position / 20m;
+        fraction = (mes - decimal.Truncate(mes));
+        var day = Convert.ToInt32(Math.Floor(fraction * 20m));
+        var iMes = Convert.ToInt32(Math.Truncate(mes)) + 1;
+        var month = _months.Where(m => m.Number == iMes)
+            .First();
+        return (month, day);
     }
 
     public Tonalpohualli Tonalpohualli(DateTime date)
@@ -66,12 +80,8 @@ public class DateTranslator : IDateTranslator
         return FindDaySign(position, specialDays.Contains(position));
     }
 
-    private decimal GetDayCount(DateTime date)
-    {
-        return CountDaysByYear(date)
-            + CountDaysByMonth(date)
-            + date.Day;
-    }
+    private decimal GetDayCount(DateTime date, bool tzolkin = true) => CountDaysByYear(date) 
+        + (tzolkin ? TzolkinDayCountByMonth(date) : TunDayCountByMonth(date)) + date.Day;
 
     private Tonalpohualli FindDaySign(int position, bool isSpecial)
     {
@@ -98,7 +108,7 @@ public class DateTranslator : IDateTranslator
         DaySign sign;
         //using (var dbContext = _dbContextFactory.CreateDbContext())
         //{
-        sign = _context.DaySigns
+        sign = _daySigns
             .Where(d => d.DayNumber == veintena)
             .First();
         //}
@@ -112,7 +122,28 @@ public class DateTranslator : IDateTranslator
         };
     }
 
-    private int CountDaysByMonth(DateTime date)
+    private int TunDayCountByMonth(DateTime date)
+    {
+        var isLeapYear = DateTime.IsLeapYear(date.Year);
+        return date.Month switch
+        {
+            1 => isLeapYear ? 196 : 197,
+            2 => isLeapYear ? 227 : 228,
+            3 => 256,
+            4 => 287,
+            5 => 317,
+            6 => 348,
+            7 => 378,
+            8 => 409,
+            9 => 440,
+            10 => 470,
+            11 => 501,
+            12 => 531,
+            _ => throw new Exception(),
+        };
+    }
+
+    private int TzolkinDayCountByMonth(DateTime date)
     {
         var isLeapYear = DateTime.IsLeapYear(date.Year);
         return date.Month switch
@@ -135,12 +166,11 @@ public class DateTranslator : IDateTranslator
 
     private int CountDaysByYear(DateTime date)
     {        
-        var startDate = new DateTime(1900, 1, 1);
-        int diffYears = date.Year - startDate.Year;
+        int diffYears = date.Year - zero.Year;
         int result = 0;
         for (int i = 0; i < diffYears; i++)
         {
-            result += IsDayAdded(startDate.Year + i) ? 366 : 365;
+            result += IsDayAdded(zero.Year + i) ? 366 : 365;
         }
         return result;
         bool IsDayAdded(int year) => DateTime.IsLeapYear(year + 1);
