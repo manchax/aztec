@@ -19,12 +19,12 @@ var date = now;
     new DateTime(1983, 5, 19);
     /*new DateTime(2025, 8, 1)*/;
 
-while (await PrintTable(date))
+while (await KeepGoing(date))
 {
     date = date.AddMonths(1);
 }
 
-async Task<bool> PrintTable(DateTime date)
+async Task<bool> KeepGoing(DateTime date)
 {
     PrintHeader();
     var days = DateTime.DaysInMonth(date.Year, date.Month);
