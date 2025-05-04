@@ -36,7 +36,7 @@ public class DateTranslator : IDateTranslator
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
-            360 => 0,
+            360 => 1,
             _ => fraction * 360m + 1
         };
         // Debug.WriteLine($"Position: {position}");
