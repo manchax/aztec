@@ -14,8 +14,9 @@ using var context = new AztecContext();
 // context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
 var now = DateTime.Now.Date;
-var date = new DateTime(now.Year, now.Month, 1);
-    // new DateTime(1983, 5, 19);
+var date = now;
+    /*new DateTime(now.Year, now.Month, 1);
+    new DateTime(1983, 5, 19);
     /*new DateTime(2025, 8, 1)*/;
 
 while (await PrintTable(date))
