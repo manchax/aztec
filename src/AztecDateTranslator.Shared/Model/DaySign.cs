@@ -23,7 +23,7 @@ public class DaySign : BaseEntity
     public string Nahuatl { get; set; }
         = string.Empty;
 
-    public string Mayan { get; set; }
+    public string Maya { get; set; }
         = string.Empty;
 
     public string Spanish { get; set; }

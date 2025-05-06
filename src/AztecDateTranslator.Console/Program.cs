@@ -10,9 +10,9 @@ using System.Diagnostics;
 //}
 //var month = now.Month;
 
-// File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
+File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
 using var context = new AztecContext();
-// context.Database.EnsureCreated();
+context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
 var now = DateTime.Now.Date;
 var date = now;
@@ -49,11 +49,13 @@ async Task<bool> KeepGoing(DateTime date)
 
 static void PrintHeader()
 {
-    Console.WriteLine("{0, -30} | {1, -18} | {2, -10} | {3, -10} | {4} | {5} | {6,-20}",
-        "               Date", "Tonalpohualli", "Maya", "Nahual",
+    Console.WriteLine("{0, -30} | {1, -24} | {2, -10} | {3, -10} | {4} | {5} | {6,-25} | {7}",
+        "               Gregoriano", "Tonalpohualli", "Maya", "Nahual",
         "Tzolkin #", // 4
-        "Special?", "Xiuhpohualli");
-    Console.WriteLine($"{new string([.. Enumerable.Repeat('-', 125)])}");
+        "Special?", // 5
+        "Xiuhpohualli", // 6
+        "Uinal (Haab)"); // 7
+    Console.WriteLine($"{new string([.. Enumerable.Repeat('-', 150)])}");
 }
 
 async Task Convert(DateTime date)
@@ -62,19 +64,20 @@ async Task Convert(DateTime date)
     var t2 = Task.Run(() => finder.Xiuhpohualli(date));
 
     await Task.WhenAll(t1, t2);
-    var sign = t1.Result;
+    var lunar = t1.Result;
     var solar = t2.Result;
-    Debug.WriteLine(sign.DaySign.AztecDeity);
+    Debug.WriteLine(lunar.DaySign.AztecDeity);
     Console.WriteLine(
-        "{4, 30} | {0,3} {1, -14} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {8,3} {7,-16}",
-        sign.HeavenNumber, // 0
-        sign.DaySign!.Nahuatl, //1
-        // sign.DaySign.Mayan,  // 2
-        sign.DaySign.Mayan,
-        sign.DaySign.Spanish,     // 3
+        "{4, 30} | {0,3} {1, -14} {10, 5} | {2, -10} | {3, -10} | {6, 9} | {5, 8} | {8,3} {7,-21} | {9}",
+        lunar.HeavenNumber, // 0
+        lunar.DaySign!.Nahuatl, //1
+        lunar.DaySign.Maya,     // 2
+        lunar.DaySign.Spanish,   // 3
         date.Date.ToLongDateString(), // 4
-        sign.IsSpecial ? 'Y' : 'N',         // 5
-        sign.TzolkinPosition,                       // 6,
+        lunar.IsSpecial ? 'Y' : 'N',    // 5
+        lunar.TzolkinPosition,              // 6,
         solar.mes.Name + $" ({solar.mes.Number})", // 7
-        solar.dia); // 8
+        solar.dia, // 8
+        solar.mes.Maya, // 9
+        $"({lunar.DaySign.DayNumber})"); // 10
 }

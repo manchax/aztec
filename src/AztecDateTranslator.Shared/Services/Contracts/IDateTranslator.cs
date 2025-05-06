@@ -7,11 +7,20 @@ using AztecDateTranslator.Shared.Model;
 public interface IDateTranslator
 {
     /// <summary>
-    /// Gets the <see cref="DaySign"/> which corresponds
-    /// to the given <paramref name="date"/>.
+    /// Gets the Tonalpohualli (Tzolkin) date,
+    /// which correlates to the given
+    /// Gregorian <paramref name="date"/>.
     /// </summary>
-    /// <returns>Tzolkin day.</returns>
+    /// <returns>
+    /// A <see cref="AztecDateTranslator.Shared.Model.Tonalpohualli"/>
+    /// </returns>
     Tonalpohualli Tonalpohualli(DateTime date);
 
-    (Cempohuallapohualli mes, int dia) Xiuhpohualli(DateTime date);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gregorian"></param>
+    /// <returns>
+    /// </returns>
+    (Cempohuallapohualli mes, int dia) Xiuhpohualli(DateTime gregorian);
 }

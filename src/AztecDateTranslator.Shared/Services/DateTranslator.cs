@@ -2,39 +2,43 @@
 using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Drawing;
 
 namespace AztecDateTranslator.Shared.Services;
 
 public class DateTranslator : IDateTranslator
 {
-    //private readonly IDbContextFactory<AztecContext> _dbContextFactory;
-
-    //public DaySignFinder(IDbContextFactory<AztecContext> dbContextFactory) 
-    //{
-    //    _dbContextFactory = dbContextFactory;
-    //}
-
-    private DateTime _zero = new(1900, 1, 1);
+    private const int GMT_YEAR = -3114;
+    private const int GMT_MONTH = 8;
+    private const int GMT_DAY = 11;
 
     private AztecContext _context;
+    //private readonly IDbContextFactory<AztecContext> _dbContextFactory;
 
+    private readonly DateTime _zero = new(1900, 1, 1);
     private IEnumerable<DaySign> _daySigns;
     private IEnumerable<Cempohuallapohualli> _months;
 
     public DateTranslator(AztecContext dbContext)
     {
         _context = dbContext;
-        _daySigns = _context.DaySigns.AsNoTracking().ToList();
-        _months = _context.Cempohuallapohuallis.AsNoTracking().ToList();
+        _daySigns = [.. _context.DaySigns.AsNoTracking()];
+        _months = [.. _context.Cempohuallapohuallis.AsNoTracking()];
     }
 
+    //public DaySignFinder(IDbContextFactory<AztecContext> dbContextFactory) 
+    //{
+    //    _dbContextFactory = dbContextFactory;
+    //}
+
     public (Cempohuallapohualli mes, int dia)
-        Xiuhpohualli(DateTime date)
+        Xiuhpohualli(DateTime gregorian)
     {
-        var dayCount = GetDayCount(date, tzolkin: false);
+        var dayCount = GetDayCount(gregorian, tzolkin: false);
+        Debug.WriteLine($"Day Count is {dayCount}");
+
         var tuns = dayCount / 360m;
-        Debug.WriteLine($"Tun count (solar) is: {tuns}");
+        Debug.WriteLine($"Years: {tuns}");
+
         var fraction = tuns - decimal.Truncate(tuns);
         var position = fraction switch
         {
@@ -42,32 +46,19 @@ public class DateTranslator : IDateTranslator
             _ => (int)Math.Round(fraction * 360m)
         };
         Debug.WriteLine($"Position: {position}");
-        // var cycleStart = FindNearestCycleStart(date);
-
-        var mes = position / 20; // 20 days each month
-        // fraction = mes - decimal.Truncate(mes);
-        //var iMes = Convert.ToInt32(
-        //    Math.Round(mes));
-        //if (iMes == 0)
-        //{
-        //    iMes = 18;
-        //}
-        if (mes == 0)
+        
+        int uinal = position / 20; // month
+        if (uinal == 0)
         {
-            //Debugger.Break();
-            mes = 18;
+            uinal = 18;
         }
 
-        var month = _months.Where(m => m.Number == mes)
+        var cempo = _months.Where(m => m.Number == uinal)
             .First();
-        var day = position % 20;
 
-        return (month, day);
-    }
+        var kin = position % 20; // day
 
-    private DateTime FindNearestCycleStart(DateTime date)
-    {
-        return DateTime.Now;
+        return (cempo, kin);
     }
 
     public Tonalpohualli Tonalpohualli(DateTime date)
@@ -120,9 +111,6 @@ public class DateTranslator : IDateTranslator
         int trecena = 1;
         for (int i = 1; i < position; i++)
         {
-            //#if DEBUG
-            //            Debug.WriteLine("{0} - {1}", trecena, veintena);
-            //#endif
             trecena = trecena switch
             {
                 13 => 1,
