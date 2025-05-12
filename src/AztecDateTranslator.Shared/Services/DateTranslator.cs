@@ -7,12 +7,7 @@ namespace AztecDateTranslator.Shared.Services;
 
 public class DateTranslator : IDateTranslator
 {
-    private const int GMT_YEAR = -3114;
-    private const int GMT_MONTH = 8;
-    private const int GMT_DAY = 11;
-
     private AztecContext _context;
-    //private readonly IDbContextFactory<AztecContext> _dbContextFactory;
 
     private static readonly DateTime Zero = new(1900, 1, 1);
     private IEnumerable<DaySign> _daySigns;
