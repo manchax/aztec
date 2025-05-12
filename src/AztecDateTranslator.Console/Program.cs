@@ -50,7 +50,7 @@ async Task<bool> KeepGoing(DateTime date)
 static void PrintHeader()
 {
     Console.WriteLine("{0, -30} | {1, -24} | {2, -10} | {3, -10} | {4} | {5} | {6,-25} | {7}",
-        "               Gregoriano", "Tonalpohualli", "Maya", "Nahual",
+        "               Gregoriano", "Tonalpohualli", "Maya", "Español",
         "Tzolkin #", // 4
         "Special?", // 5
         "Xiuhpohualli", // 6
@@ -75,7 +75,7 @@ async Task Convert(DateTime date)
         lunar.DaySign.Spanish,   // 3
         date.Date.ToLongDateString(), // 4
         lunar.IsSpecial ? 'Y' : 'N',    // 5
-        lunar.TzolkinPosition,              // 6,
+        lunar.DayNumber,              // 6,
         solar.mes.Name + $" ({solar.mes.Number})", // 7
         solar.dia, // 8
         solar.mes.Maya, // 9

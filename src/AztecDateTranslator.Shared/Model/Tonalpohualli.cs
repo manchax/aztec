@@ -38,7 +38,7 @@ public class Tonalpohualli
     /// <summary>
     /// The position within the cycle (1-260)
     /// </summary>
-    public int TzolkinPosition { get; set; }
+    public int DayNumber { get; set; }
 
     /// <summary>
     /// Special days are considered more energetic.

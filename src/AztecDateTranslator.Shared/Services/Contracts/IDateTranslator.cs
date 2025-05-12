@@ -7,14 +7,14 @@ using AztecDateTranslator.Shared.Model;
 public interface IDateTranslator
 {
     /// <summary>
-    /// Gets the Tonalpohualli (Tzolkin) date,
+    /// Gets the Tonalpohualli (aztec) - Tzolkin (maya) date
     /// which correlates to the given
     /// Gregorian <paramref name="date"/>.
     /// </summary>
     /// <returns>
     /// A <see cref="AztecDateTranslator.Shared.Model.Tonalpohualli"/>
     /// </returns>
-    Tonalpohualli Tonalpohualli(DateTime date);
+    Tonalpohualli Tonalpohualli(DateTime gregorian);
 
     /// <summary>
     /// 

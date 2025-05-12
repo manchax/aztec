@@ -323,7 +323,8 @@ public partial class AztecContext
             Name = "Nemontemi", Maya = "Wayeb",
             Description = "",
             Deity = ""
-        }];
+        }
+    ];
 
     private void AddDaySigns(DbSet<DaySign> dbSet)
         => dbSet.AddRange(_signs);
