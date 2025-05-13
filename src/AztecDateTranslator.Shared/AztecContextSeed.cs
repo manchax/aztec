@@ -213,116 +213,116 @@ public partial class AztecContext
         new Cempohuallapohualli {
             Number = 1,
             Name = "Cuahuitlehua", Maya = "Pop",
-            Description = "",
-            Deity = "Tláloc"
+            Deity = "Tláloc",
+            Description = "cesan las aguas o elevación de los árboles",
         },
         new Cempohuallapohualli {
             Number = 2,
             Name = "Cuahuitlehua", Maya = "Wo'",
-            Description = "",
-            Deity = "Xipe Tótec"
+            Deity = "Xipe Tótec",
+            Description = "desolladura de hombres",
         },
         new Cempohuallapohualli {
             Number = 3,
             Name = "Tozoztontli", Maya = "Sip",
-            Description = "",
-            Deity = "Coatlicue"
+            Deity = "Coatlicue",
+            Description = "pequeña vigilia",
         },
         new Cempohuallapohualli {
             Number = 4,
             Name = "Huey Tozoztli", Maya = "Sotz",
-            Description = "",
-            Deity = "Cintéotl-Chicomecóatl"
+            Deity = "Cintéotl-Chicomecóatl",
+            Description = "gran vigilia",
         },
         new Cempohuallapohualli {
             Number = 5,
             Name = "Tóxcatl", Maya = "Sek",
-            Description = "",
-            Deity = "Tezcatlipoca-Huitzilopochtli"
+            Deity = "Tezcatlipoca-Huitzilopochtli",
+            Description = "sequedad o sequía",
         },
         new Cempohuallapohualli {
             Number = 6,
             Name = "Etzalcualiztli", Maya = "Xul",
-            Description = "",
-            Deity = "Tláloc"
+            Deity = "Tláloc",
+            Description = "se come eztalli",
         },
         new Cempohuallapohualli {
             Number = 7,
             Name = "Tecuilhuitontli", Maya = "Yaxkin",
-            Description = "",
-            Deity = "Huixtocíhuatl"
+            Deity = "Huixtocíhuatl",
+            Description = "pequeña fiesta de los señores",
         },
         new Cempohuallapohualli {
             Number = 8,
             Name = "Huey Tecuilhuitl", Maya = "Mol",
-            Description = "",
-            Deity = "Xilonen-Xochipilli"
+            Deity = "Xilonen-Xochipilli",
+            Description = "gran fiesta de los señores",
         },
         new Cempohuallapohualli {
             Number = 9,
             Name = "Tlaxochimaco", Maya = "Ch'en",
-            Description = "",
-            Deity = "Huitzilopochtli-Mictlantecuhtli"
+            Deity = "Huitzilopochtli-Mictlantecuhtli",
+            Description = "ofrenda de las flores o pequeña fiesta de los muertos",
         },
         new Cempohuallapohualli {
             Number = 10,
             Name = "Xocotlhuetzi", Maya = "Sak",
-            Description = "",
-            Deity = "Xiuhtecuhtli-Yacatecuhtl-Mictlantecuhtli"
+            Deity = "Xiuhtecuhtli-Yacatecuhtl-Mictlantecuhtli",
+            Description = "el fruto cae o gran fiesta de los muertos",
         },
         new Cempohuallapohualli {
             Number = 11,
             Name = "Ochpaniztli", Maya = "Keh",
-            Description = "Atlatonan-Chicomecóatl-Toci",
-            Deity = ""
+            Deity = "Atlatonan-Chicomecóatl-Toci",
+            Description = "barrimiento",
         },
         new Cempohuallapohualli {
             Number = 12,
             Name = "Teotleco", Maya = "Mac",
-            Description = "",
-            Deity = ""
+            Deity = "",
+            Description = "llegada de los dioses",
         },
         new Cempohuallapohualli {
             Number = 13,
             Name = "Tepeilhuitl", Maya = "",
-            Description = "",
-            Deity = ""
+            Deity = "",
+            Description = "la fiesta de las montañas",
         },
         new Cempohuallapohualli {
             Number = 14,
             Name = "Quecholli", Maya = "Kankin",
-            Description = "",
-            Deity = "Mixcóatl"
+            Deity = "Mixcóatl",
+            Description = "lanza de guerra o precioso penacho",
         },
         new Cempohuallapohualli {
             Number = 15,
             Name = "Panquetzaliztli", Maya = "Muwan",
-            Description = "",
-            Deity = "Huitzilopochtli"
+            Deity = "Huitzilopochtli",
+            Description = "levantamiento de banderas",
         },
         new Cempohuallapohualli {
             Number = 16,
             Name = "Atemoztli", Maya = "Pax",
-            Description = "",
-            Deity = "Tláloc"
+            Deity = "Tláloc",
+            Description = "bajan las aguas",
         },
         new Cempohuallapohualli {
             Number = 17,
             Name = "Títitl", Maya = "Kayab",
-            Description = "",
-            Deity = "Ilamatecuhtli-Mixcóatl"
+            Deity = "Ilamatecuhtli-Mixcóatl",
+            Description = "arrugado",
         },
         new Cempohuallapohualli {
             Number = 18,
             Name = "Izcalli", Maya = "Cumkú",
-            Description = "",
-            Deity = "Xiuhtecutli"
+            Deity = "Xiuhtecutli",
+            Description = "resurrección o renovación",
         },
         new Cempohuallapohualli {
             Number = 19,
             Name = "Nemontemi", Maya = "Wayeb",
-            Description = "",
-            Deity = ""
+            Deity = "",
+            Description = "5 días funestos",
         }
     ];
 
