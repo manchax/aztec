@@ -43,6 +43,12 @@ public class DateTranslator : IDateTranslator
             uinal = 18;
         }
 
+        uinal -= 3;
+        if (uinal <= 0)
+        {
+            uinal = 18 - Math.Abs(uinal);
+        }
+
         var cempo = _months.Where(m => m.Number == uinal)
             .First();
 
