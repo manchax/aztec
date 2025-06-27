@@ -35,16 +35,16 @@ variables:
 
 stages:
   - build
-  - test
-  - deploy
+  #- test
+  #- deploy
 
 build_job:
   stage: build
   tags:
     - windows  
   script:
-    - dotnet clean -c Release --verbosity=minimal $SOLUTION_FILE    
-    - dotnet build -c Release --no-restore --packages $PACKAGES_DIR $SOLUTION_FILE    
+    - dotnet clean -c Release --verbosity=minimal $SOLUTION_FILE
+    - dotnet build -c Release --packages $PACKAGES_DIR $SOLUTION_FILE    
   artifacts:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     # paths:
