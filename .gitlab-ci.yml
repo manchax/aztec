@@ -31,7 +31,7 @@
 # place project specific paths in variables to make the rest of the script more generic
 variables:
     SOLUTION_FILE: src/AztecDateTranslator.slnx
-    PACKAGES_DIR: '../../.nuget'
+    PACKAGES_DIR: '../.nuget'
 
 stages:
   - build
