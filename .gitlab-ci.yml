@@ -7,6 +7,7 @@ variables:
     PACKAGES_DIR: ..\.nuget
     SOLUTION_FILE: src\AztecDateTranslator.slnx
     RELEASE_DIR: src\AztecDateTranslator.Console\bin\Release\net9.0\
+    CONSOLE_TAR: console.tar.xz
 stages:
   - build
   #- test
@@ -18,11 +19,12 @@ build_job:
     - windows
   script:
     - dotnet clean -c Release --verbosity=minimal $SOLUTION_FILE
-    - dotnet build -c Release --packages $PACKAGES_DIR $SOLUTION_FILE    
+    - dotnet build -c Release --packages $PACKAGES_DIR $SOLUTION_FILE
+    - tar cvJf $CONSOLE_TAR $RELEASE_DIR
   artifacts:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     paths:
-      - $RELEASE_DIR
+      - $CONSOLE_TAR
     #   - '$env:EXE_RELEASE_FOLDER\YourApp.exe'  # saving exe to copy to deploy folder
     #   - '$env:MSI_RELEASE_FOLDER\YourApp Setup.msi'  # saving msi to copy to deploy folder
     #   - '$env:TEST_FOLDER\'  # saving entire Test project so NUnit can run tests
