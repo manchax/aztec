@@ -2,23 +2,12 @@
 using AztecDateTranslator.Shared.Services;
 using System.Diagnostics;
 
-//var start = new DateTime(1999, 1, 5);
-//var dates = new List<DateTime>();
-//dates.Add(start);
-//for (var i = 1; i <= 13; i++) { 
-//    dates.Add(start.AddDays(i * 360));
-//}
-//var month = now.Month;
-
 File.Delete("C:\\Users\\manchax\\AppData\\Local\\aztec.db");
 using var context = new AztecContext();
 context.Database.EnsureCreated();
 var finder = new DateTranslator(context);
 var now = DateTime.Now.Date;
 var date = now;
-    /*new DateTime(now.Year, now.Month, 1);
-    new DateTime(1983, 5, 19);
-    /*new DateTime(2025, 8, 1)*/;
 
 while (await KeepGoing(date))
 {
