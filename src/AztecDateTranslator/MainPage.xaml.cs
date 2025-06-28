@@ -1,25 +1,18 @@
-﻿namespace AztecDateTranslator
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿using AztecDateTranslator.Shared.ViewModels;
+using Microsoft.Extensions.Logging;
 
+namespace AztecDateTranslator
+{
+    public partial class MainPage
+    {
         public MainPage()
         {
+            var app = (AztecDateTranslator.App)App.Current!;
+            var logger = app!.Handler.GetService<ILogger<DateTranslator>>();
+            var translator = app.Handler.GetService<IDateTranslator>();
+            var viewModel = new DateTranslator(translator!, logger!);
+            BindingContext = viewModel;
             InitializeComponent();
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            //if (count == 1)
-            //    CounterBtn.Text = $"Clicked {count} time";
-            //else
-            //    CounterBtn.Text = $"Clicked {count} times";
-
-            //SemanticScreenReader.Announce(CounterBtn.Text);
-        }
     }
-
 }

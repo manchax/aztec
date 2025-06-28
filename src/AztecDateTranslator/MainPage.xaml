@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AztecDateTranslator.MainPage">
+             xmlns:vm="clr-namespace:AztecDateTranslator.Shared.ViewModels;assembly=AztecDateTranslator.Shared"
+             x:Class="AztecDateTranslator.MainPage"
+             x:DataType="vm:DateTranslator">
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -14,17 +16,15 @@
                 <Label Text="Date:" 
                        Style="{StaticResource SubHeadline}"
                        VerticalOptions="Center" />
-                <DatePicker VerticalOptions="Center" />
-                <Button
-                    Text="Convert" 
-                    SemanticProperties.Hint="Convert Date"
-                    HorizontalOptions="Fill" />
+                
+                <DatePicker Date="{Binding SelectedDate}"
+                            VerticalOptions="Center" />
             </HorizontalStackLayout>
 
-            <Label Text="Tonalpohualli: 12 Ozomatli" 
+            <Label Text="{Binding TonalpohualliLabel}"
                    Style="{StaticResource Headline}" />
             <Image
-                Source="d11.png"
+                Source="d12.png"
                 HeightRequest="192"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
