@@ -13,10 +13,8 @@ public partial class DateTranslator(
         ILogger<DateTranslator> logger)
     : BaseViewModel(logger)
 {
-    // private readonly ILogger<DateTranslator> _logger = logger;
-
     [ObservableProperty]
-    private Tonalpohualli? _tonalpohualli;
+    private Tonalpohualli? _tonalpohualli = dateTranslatorSvc.Tonalpohualli(DateTime.Now.Date);
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TonalpohualliLabel))]
