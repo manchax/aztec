@@ -1,4 +1,4 @@
-﻿using AztecDateTranslator.Shared.ViewModels;
+﻿using AztecDateTranslator.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace AztecDateTranslator

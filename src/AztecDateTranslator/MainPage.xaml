@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:AztecDateTranslator.Shared.ViewModels;assembly=AztecDateTranslator.Shared"
+             xmlns:vm="clr-namespace:AztecDateTranslator.ViewModels;assembly=AztecDateTranslator"
              x:Class="AztecDateTranslator.MainPage"
              x:DataType="vm:DateTranslator">
     <ScrollView>
@@ -24,7 +24,7 @@
             <Label Text="{Binding TonalpohualliLabel}"
                    Style="{StaticResource Headline}" />
             <Image
-                Source="d12.png"
+                Source="{Binding ImageSource}"
                 HeightRequest="192"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
