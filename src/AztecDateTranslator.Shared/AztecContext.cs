@@ -20,6 +20,18 @@ public partial class AztecContext : DbContext
 
     public static string DbPath => _dbPath;
 
+    public void Initialize()
+    {
+        if (!File.Exists(_dbPath))
+        {
+            Database.EnsureCreated();
+        }
+        else
+        {
+            Database.Migrate();
+        }
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         options.UseSqlite($"Data Source={_dbPath}")
