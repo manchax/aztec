@@ -1,5 +1,7 @@
 using AztecDateTranslator.Shared.Model;
 
+namespace AztecDateTranslator.Shared.Services;
+
 /// <summary>
 /// 
 /// </summary>
@@ -11,7 +13,7 @@ public interface IDateTranslator
     /// Gregorian <paramref name="date"/>.
     /// </summary>
     /// <returns>
-    /// A <see cref="AztecDateTranslator.Shared.Model.Tonalpohualli"/>
+    /// A <see cref="Model.Tonalpohualli"/>
     /// </returns>
     Tonalpohualli Tonalpohualli(DateTime gregorian);
 

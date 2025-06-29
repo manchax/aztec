@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.ComponentModel;
+using AztecDateTranslator.Shared.Services;
+using BaseTranslator = AztecDateTranslator.Shared.ViewModels.DateTranslator;
 
 namespace AztecDateTranslator.ViewModels;
 
 public class DateTranslator(IDateTranslator dateTranslator,
-    ILogger<Shared.ViewModels.DateTranslator> logger)
-    : Shared.ViewModels.DateTranslator(dateTranslator, logger)
+    ILogger<DateTranslator> logger)
+    : BaseTranslator(dateTranslator, logger)
 {
     public string ImageSource => Tonalpohualli?.DaySign?.GetImage() ?? "";
 
