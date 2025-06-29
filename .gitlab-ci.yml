@@ -6,7 +6,7 @@
 variables:
     PACKAGES_DIR: ..\.nuget
     SOLUTION_FILE: src\AztecDateTranslator.slnx
-    RELEASE_DIR: src\AztecDateTranslator.Console\bin\Release\net9.0
+    RELEASE_DIR: src\AztecDateTranslator.Console\bin\Release\net10.0
     CONSOLE_TAR: console.tar.xz
 stages:
   - build
