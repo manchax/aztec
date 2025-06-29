@@ -1,6 +1,4 @@
-﻿using AztecDateTranslator.Shared.Entities;
-
-namespace AztecDateTranslator;
+﻿using AztecDateTranslator.Shared.Model;
 
 public static class ModelExtensions
 {

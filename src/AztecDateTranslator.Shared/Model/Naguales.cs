@@ -1,4 +1,4 @@
-﻿namespace AztecDateTranslator.Shared.Entities;
+﻿namespace AztecDateTranslator.Shared.Model;
 
 public enum Naguales
 {

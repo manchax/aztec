@@ -1,5 +1,4 @@
-﻿using AztecDateTranslator.Shared.Entities;
-using AztecDateTranslator.Shared.Model;
+﻿using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace AztecDateTranslator.Shared;

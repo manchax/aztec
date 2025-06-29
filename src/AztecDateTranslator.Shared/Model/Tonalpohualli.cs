@@ -1,5 +1,4 @@
-﻿using AztecDateTranslator.Shared.Entities;
-namespace AztecDateTranslator.Shared.Model;
+﻿namespace AztecDateTranslator.Shared.Model;
 /*
 Moon Calendar System
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AztecDateTranslator.Shared.Entities;
+namespace AztecDateTranslator.Shared.Model;
 
 /// <summary>
 /// Represents one of the 20 aztec day signs.

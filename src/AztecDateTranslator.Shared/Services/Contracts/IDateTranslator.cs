@@ -1,4 +1,3 @@
-using AztecDateTranslator.Shared.Entities;
 using AztecDateTranslator.Shared.Model;
 
 /// <summary>
