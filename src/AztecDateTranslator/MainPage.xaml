@@ -5,9 +5,7 @@
              x:Class="AztecDateTranslator.MainPage"
              x:DataType="vm:DateTranslator">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+        <VerticalStackLayout Padding="30,0" Spacing="25">
             <Label
                 Text="Pick a Gregorian Date:"
                 Style="{StaticResource Headline}"
@@ -16,7 +14,7 @@
                 <Label Text="Date:" 
                        Style="{StaticResource SubHeadline}"
                        VerticalOptions="Center" />
-                
+
                 <DatePicker Date="{Binding SelectedDate}"
                             VerticalOptions="Center" />
             </HorizontalStackLayout>
@@ -34,7 +32,6 @@
                 HeightRequest="192"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
