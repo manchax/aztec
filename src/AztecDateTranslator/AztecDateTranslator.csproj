@@ -69,6 +69,7 @@
 	  <MauiImage Include="Resources\Images\days\d11.png" />
 	  <MauiImage Include="Resources\Images\days\d12.png" />
 	  <MauiImage Include="Resources\Images\days\d13.png" />
+	  <MauiImage Include="Resources\Images\days\d14.png" />
 	</ItemGroup>
 
 	<ItemGroup>
