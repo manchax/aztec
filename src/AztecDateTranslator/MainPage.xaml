@@ -21,6 +21,12 @@
                             VerticalOptions="Center" />
             </HorizontalStackLayout>
 
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Text="&#x25C0; Previous" Command="{Binding Previous}" />
+                <Button Text="&#x25BC; Current" Command="{Binding Current}" />
+                <Button Text="Next &#x25B6;" Command="{Binding Next}" />
+            </HorizontalStackLayout>
+
             <Label Text="{Binding TonalpohualliLabel}"
                    Style="{StaticResource Headline}" />
             <Image
