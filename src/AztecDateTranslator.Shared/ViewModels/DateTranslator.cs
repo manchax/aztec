@@ -42,8 +42,7 @@ public partial class DateTranslator : BaseViewModel
 
     public IAsyncRelayCommand Previous { get; }
 
-    public IAsyncRelayCommand Current { get; } = new AsyncRelayCommand(
-        () => Task.CompletedTask);
+    public IAsyncRelayCommand Current { get; }
 
     public IAsyncRelayCommand Next { get; }
 
