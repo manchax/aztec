@@ -15,11 +15,11 @@ public partial class DateTranslator : BaseViewModel
     private readonly IDateTranslator _dateTranslatorSvc;
 
     [ObservableProperty]
-    private Tonalpohualli? _tonalpohualli;
-
-    [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TonalpohualliLabel))]
     private DateTime _selectedDate = DateTime.Now.Date;
+
+    [ObservableProperty]
+    private Tonalpohualli? _tonalpohualli;
 
     public DateTranslator(IDateTranslator dateTranslatorSvc,
         ILogger<DateTranslator> logger) : base(logger)
@@ -40,14 +40,26 @@ public partial class DateTranslator : BaseViewModel
         }));
     }
 
-    public IAsyncRelayCommand Previous { get; }
-
-    public IAsyncRelayCommand Current { get; }
-
-    public IAsyncRelayCommand Next { get; }
-
+    /// <summary>
+    /// Text description of the Tonalpohualli date.
+    /// </summary>
     public string TonalpohualliLabel
         => $"Tonalpohualli: {Tonalpohualli?.HeavenNumber} {Tonalpohualli?.DaySign?.Nahuatl}";
+
+    /// <summary>
+    /// Changes <see cref="SelectedDate"/> to the previous day.
+    /// </summary>
+    public IAsyncRelayCommand Previous { get; }
+
+    /// <summary>
+    /// Changes <see cref="SelectedDate"/> to the current day.
+    /// </summary>
+    public IAsyncRelayCommand Current { get; }
+
+    /// <summary>
+    /// Changes <see cref="SelectedDate"/> to the next day.
+    /// </summary>
+    public IAsyncRelayCommand Next { get; }
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
