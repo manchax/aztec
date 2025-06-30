@@ -1,6 +1,4 @@
-﻿using AztecDateTranslator.Shared.Services;
-using DateTranslatorVM = AztecDateTranslator.ViewModels.DateTranslator;
-using Microsoft.Extensions.Logging;
+﻿using AztecDateTranslator.ViewModels;
 
 namespace AztecDateTranslator
 {
@@ -8,10 +6,9 @@ namespace AztecDateTranslator
     {
         public MainPage()
         {
-            var app = (AztecDateTranslator.App)App.Current!;
-            var logger = app!.Handler.GetService<ILogger<DateTranslatorVM>>();
-            var translator = app.Handler.GetService<IDateTranslator>();
-            var viewModel = new DateTranslatorVM(translator!, logger!);
+            var app = Application.Current!;
+            var viewModel = app.Handler.GetService<DateTranslator>() ??
+                throw new NullReferenceException();
             BindingContext = viewModel;
             InitializeComponent();
         }

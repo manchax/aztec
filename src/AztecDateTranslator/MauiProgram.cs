@@ -2,6 +2,7 @@
 using AztecDateTranslator.Shared.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using DateTranslatorVM = AztecDateTranslator.ViewModels.DateTranslator;
 
 namespace AztecDateTranslator
 {
@@ -27,6 +28,8 @@ namespace AztecDateTranslator
                 options.UseSqlite($"Data Source={AztecContext.DbPath}"));
 
             builder.Services.AddTransient<IDateTranslator, DateTranslator>();
+            builder.Services.AddScoped<DateTranslatorVM>();
+
             var app = builder.Build();
             using var scope = app.Services.CreateScope();
             using var dbContext = scope.ServiceProvider.GetRequiredService<AztecContext>();
