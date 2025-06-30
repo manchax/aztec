@@ -5,24 +5,24 @@ namespace AztecDateTranslator.Shared;
 
 public partial class AztecContext : DbContext
 {
-    private static readonly string _dbPath;
+    private static readonly string dbPath;
 
     static AztecContext()
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);
-        _dbPath = Path.Join(path, "aztec.db");
+        dbPath = Path.Join(path, "aztec.db");
     }
 
     public DbSet<DaySign> DaySigns { get; set; }
 
     public DbSet<Cempohuallapohualli> Cempohuallapohuallis { get; set; }
 
-    public static string DbPath => _dbPath;
+    public static string DbPath => dbPath;
 
     public void Initialize()
     {
-        if (!File.Exists(_dbPath))
+        if (!File.Exists(dbPath))
         {
             Database.EnsureCreated();
         }
@@ -34,7 +34,7 @@ public partial class AztecContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseSqlite($"Data Source={_dbPath}")
+        options.UseSqlite($"Data Source={dbPath}")
             .EnableSensitiveDataLogging()
             .UseSeeding((context, _) =>
             {
