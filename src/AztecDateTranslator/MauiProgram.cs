@@ -22,8 +22,7 @@ namespace AztecDateTranslator
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddDbContext<AztecContext>();
-            // builder.AddLogging(options => options.AddDebug())
+            builder.Services.AddDbContext<AztecContext>();            
             builder.Services.AddPooledDbContextFactory<AztecContext>(options =>
                 options.UseSqlite($"Data Source={AztecContext.DbPath}"));
 
