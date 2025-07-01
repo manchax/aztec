@@ -65,11 +65,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\days\d15.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Include="Resources\Images\days\d1.png" />
 	  <MauiImage Include="Resources\Images\days\d11.png" />
 	  <MauiImage Include="Resources\Images\days\d12.png" />
 	  <MauiImage Include="Resources\Images\days\d13.png" />
 	  <MauiImage Include="Resources\Images\days\d14.png" />
+	  <MauiImage Include="Resources\Images\days\d15.png" />
 	</ItemGroup>
 
 	<ItemGroup>
