@@ -159,7 +159,7 @@ public partial class AztecContext
         new DaySign {
             DayNumber = 16,
             Nagual = Naguales.Vulture,
-            Nahuatl = "Cozcacuahtli",
+            Nahuatl = "Cozcacuauhtli",
             Maya = "Cib",
             Spanish = "Buitre",
             English = "Vulture",
