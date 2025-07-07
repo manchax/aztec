@@ -11,6 +11,17 @@ namespace AztecDateTranslator
                 throw new NullReferenceException();
             BindingContext = viewModel;
             InitializeComponent();
+            SetVisibility(DeviceDisplay.Current.MainDisplayInfo.Orientation);
+            DeviceDisplay.Current.MainDisplayInfoChanged += (s, e) =>
+            {
+                SetVisibility(e.DisplayInfo.Orientation);
+            };
+        }
+
+        private void SetVisibility(DisplayOrientation orientation)
+        {
+            LandscapePanel1.IsVisible = DisplayOrientation.Landscape == orientation;
+            PortraitPanel1.IsVisible = DisplayOrientation.Portrait == orientation;
         }
     }
 }
