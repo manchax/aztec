@@ -32,6 +32,13 @@
                 HeightRequest="192"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Label Text="Aztec Deity: " VerticalOptions="Center" />
+                <Label Text="{Binding AztecDeity}" VerticalOptions="Center" />
+                <Label Text="Is Special: " VerticalOptions="Center" />
+                <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

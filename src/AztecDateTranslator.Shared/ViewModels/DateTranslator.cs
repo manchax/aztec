@@ -16,6 +16,7 @@ public partial class DateTranslator : BaseViewModel
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TonalpohualliLabel))]
+    [NotifyPropertyChangedFor(nameof(IsSpecial))]
     private DateTime _selectedDate = DateTime.Now.Date;
 
     [ObservableProperty]
@@ -45,6 +46,17 @@ public partial class DateTranslator : BaseViewModel
     /// </summary>
     public string TonalpohualliLabel
         => $"Tonalpohualli: {Tonalpohualli?.HeavenNumber} {Tonalpohualli?.DaySign?.Nahuatl}";
+
+    /// <summary>
+    /// Special days are considered more energetic.
+    /// </summary>
+    public char IsSpecial => (Tonalpohualli?.IsSpecial ?? false) ? 'Y' : 'N';
+
+    /// <summary>
+    /// Deity associated to the Tonalpohualli date in Nahuatl and Spanish.
+    /// </summary>
+    public string AztecDeity
+        => $"{Tonalpohualli?.DaySign?.AztecDeity} - {Tonalpohualli?.DaySign?.Description}.";
 
     /// <summary>
     /// Changes <see cref="SelectedDate"/> to the previous day.
