@@ -12,10 +12,8 @@ namespace AztecDateTranslator
             BindingContext = viewModel;
             InitializeComponent();
             SetVisibility(DeviceDisplay.Current.MainDisplayInfo.Orientation);
-            DeviceDisplay.Current.MainDisplayInfoChanged += (s, e) =>
-            {
-                SetVisibility(e.DisplayInfo.Orientation);
-            };
+            DeviceDisplay.Current.MainDisplayInfoChanged += (_, e)
+                => SetVisibility(e.DisplayInfo.Orientation);
         }
 
         private void SetVisibility(DisplayOrientation orientation)
