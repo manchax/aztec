@@ -58,12 +58,12 @@ public partial class DateTranslator : BaseViewModel
     /// <summary>
     /// Aztec deity name.
     /// </summary>
-    public string AztecDeity => $"{Tonalpohualli?.DaySign?.AztecDeity}";
+    public string AztecDeity => Tonalpohualli?.DaySign?.AztecDeity ?? "";
 
     /// <summary>
     /// Aztec deity description.
     /// </summary>
-    public string AztecDeityDescription => $"{Tonalpohualli?.DaySign?.Description}";
+    public string AztecDeityDescription => Tonalpohualli?.DaySign?.Description ?? "";
 
     /// <summary>
     /// Deity associated to the Tonalpohualli date in Nahuatl and Spanish.
