@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-             xmlns:vm="clr-namespace:AztecDateTranslator.ViewModels;assembly=AztecDateTranslator"
-             x:Class="AztecDateTranslator.MainPage"
-             x:DataType="vm:DateTranslator">
+<ContentPage x:Class="AztecDateTranslator.MainPage"
+             x:DataType="DateTranslator">
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
             <Label
