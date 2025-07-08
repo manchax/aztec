@@ -17,9 +17,9 @@ public partial class DateTranslator : BaseViewModel
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TonalpohualliLabel))]
     [NotifyPropertyChangedFor(nameof(IsSpecial))]
-    [NotifyPropertyChangedFor(nameof(AztecDeity))]
-    [NotifyPropertyChangedFor(nameof(AztecDeityDescription))]
-    [NotifyPropertyChangedFor(nameof(AztecDeityHorizontal))]
+    [NotifyPropertyChangedFor(nameof(Deity))]
+    [NotifyPropertyChangedFor(nameof(DeityDescription))]
+    [NotifyPropertyChangedFor(nameof(DeityHorizontal))]
     private DateTime _selectedDate = DateTime.Now.Date;
 
     [ObservableProperty]
@@ -58,17 +58,17 @@ public partial class DateTranslator : BaseViewModel
     /// <summary>
     /// Aztec deity name.
     /// </summary>
-    public string AztecDeity => Tonalpohualli?.DaySign?.AztecDeity ?? "";
+    public string Deity => Tonalpohualli?.DaySign?.AztecDeity ?? "";
 
     /// <summary>
     /// Aztec deity description.
     /// </summary>
-    public string AztecDeityDescription => Tonalpohualli?.DaySign?.Description ?? "";
+    public string DeityDescription => Tonalpohualli?.DaySign?.Description ?? "";
 
     /// <summary>
     /// Deity associated to the Tonalpohualli date in Nahuatl and Spanish.
     /// </summary>
-    public string AztecDeityHorizontal
+    public string DeityHorizontal
         => $"{Tonalpohualli?.DaySign?.AztecDeity} - {Tonalpohualli?.DaySign?.Description}.";
 
     /// <summary>
