@@ -2,6 +2,8 @@
 using AztecDateTranslator.Shared.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
+using System.Diagnostics;
 using DateTranslatorVM = AztecDateTranslator.ViewModels.DateTranslator;
 
 namespace AztecDateTranslator
@@ -17,11 +19,25 @@ namespace AztecDateTranslator
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+#if !(DEBUG && WINDOWS)
+            ;
+#else
+            .ConfigureLifecycleEvents(static e =>
+            {
+                e.AddWindows(w => w.OnWindowCreated(window =>
+                    window.SizeChanged += (_, e) =>
+                        Debug.WriteLine("Window size changed. " +
+                            $"Width: {e.Size.Width}, Height: {e.Size.Height}")
+                ));
+            });
+#endif
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
+
             builder.Services.AddDbContext<AztecContext>();            
             builder.Services.AddPooledDbContextFactory<AztecContext>(options =>
                 options.UseSqlite($"Data Source={AztecContext.DbPath}"));
