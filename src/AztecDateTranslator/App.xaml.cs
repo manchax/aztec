@@ -9,7 +9,13 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            const int winW = 600;
+            const int winH = 745;
+            return new Window(new AppShell())
+            {
+                Width = winW,
+                Height = winH
+            };
         }
     }
 }
