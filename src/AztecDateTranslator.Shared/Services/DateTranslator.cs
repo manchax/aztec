@@ -56,6 +56,13 @@ public class DateTranslator : IDateTranslator
         return (cempo, kin);
     }
 
+    /// <summary>
+    /// Gets 13x20 = 260 day based calendar, <see cref="Model.Tonalpohualli"/>
+    /// for specified <paramref name="gregorian"/> date.
+    /// </summary>
+    /// <param name="gregorian"></param>
+    /// <returns></returns>
+    /// <exception cref="ArithmeticException"></exception>
     public Tonalpohualli Tonalpohualli(DateTime gregorian)
     {
         var dayCount = GetDayCount(gregorian) / 260m;
@@ -89,17 +96,6 @@ public class DateTranslator : IDateTranslator
         return FindDaySign(position, specialDays.Contains(position));
     }
 
-    /// <summary>
-    /// Gets the count of the days from Jan 1st, 1900.
-    /// </summary>
-    /// <param name="date"></param>
-    /// <param name="tzolkin"></param>
-    /// <returns></returns>
-    private static int GetDayCount(DateTime date, bool tzolkin = true)
-        => CountDaysByYear(date) + (tzolkin
-        ? TzolkinDayCountByMonth(date)
-        : TunDayCountByMonth(date)) + date.Day;
-
     private Tonalpohualli FindDaySign(int position, bool isSpecial)
     {
         var veintena = 1;
@@ -130,6 +126,17 @@ public class DateTranslator : IDateTranslator
             DayNumber = position,
         };
     }
+
+    /// <summary>
+    /// Gets the count of the days from Jan 1st, 1900.
+    /// </summary>
+    /// <param name="date"></param>
+    /// <param name="tzolkin"></param>
+    /// <returns></returns>
+    private static int GetDayCount(DateTime date, bool tzolkin = true)
+        => CountDaysByYear(date) + (tzolkin
+        ? TzolkinDayCountByMonth(date)
+        : TunDayCountByMonth(date)) + date.Day;
 
     /// <summary>
     /// Count of the days from Jan 1st, 1900.
@@ -188,6 +195,8 @@ public class DateTranslator : IDateTranslator
             result += IsDayAdded(Zero.Year + i) ? 366 : 365;
         }
         return result;
-        static bool IsDayAdded(int year) => DateTime.IsLeapYear(year + 1);
+
+        static bool IsDayAdded(int year)
+            => DateTime.IsLeapYear(year + 1);
     }
 }

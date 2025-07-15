@@ -8,8 +8,10 @@ with 20 months of 13 days each.
 This calendar functioned as a record of auspicious dates for important events, such as the best days for sowing, 
 harvesting, or making expeditionary journeys.
 
-In the Tonalpohualli, each of the 260 days of the year have a name created from a system 
-that combines the names of the 20 days of the solar calendar with a numbering system between 1 and 13. 
+In the Tonalpohualli, each of the 260 days of the year have
+a name created from a system 
+that combines the names of the 20 days of the solar calendar with 
+a numbering system between 1 and 13. 
 
 This system avoided the repetition of names.
 
