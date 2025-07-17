@@ -18,7 +18,7 @@ public interface IDateTranslator
     Tonalpohualli Tonalpohualli(DateTime gregorian);
 
     /// <summary>
-    /// 
+    /// WIP, needs correction.
     /// </summary>
     /// <param name="gregorian"></param>
     /// <returns>
