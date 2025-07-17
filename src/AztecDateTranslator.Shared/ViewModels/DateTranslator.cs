@@ -90,6 +90,7 @@ public partial class DateTranslator : BaseViewModel
     {
         if (e.PropertyName == nameof(SelectedDate))
         {
+            // calculate Tonalpohualli based on NEW SelectedDate
             Tonalpohualli = _dateTranslatorSvc.Tonalpohualli(SelectedDate);
             Logger.LogInformation("OnPropertyChanged: {PropertyName} = {SelectedDate}",
                 e.PropertyName, SelectedDate.ToShortDateString());
