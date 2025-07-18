@@ -7,6 +7,9 @@ public partial class AztecContext : DbContext
 {
     private static readonly string dbPath;
 
+    /// <summary>
+    /// Sets sqlite db path.
+    /// </summary>
     static AztecContext()
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
@@ -18,8 +21,11 @@ public partial class AztecContext : DbContext
 
     public DbSet<Cempohuallapohualli> Cempohuallapohuallis { get; set; }
 
-    public static string DbPath => dbPath;
+    internal static string DbPath => dbPath;
 
+    /// <summary>
+    /// on new installs creates db, otherwise, runs updates on existing db file
+    /// </summary>    
     public void Initialize()
     {
         if (!File.Exists(dbPath))
