@@ -2,8 +2,10 @@
 using AztecDateTranslator.Shared.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+#if DEBUG && WINDOWS
 using Microsoft.Maui.LifecycleEvents;
 using System.Diagnostics;
+#endif
 using DateTranslatorVM = AztecDateTranslator.ViewModels.DateTranslator;
 
 namespace AztecDateTranslator
@@ -36,19 +38,18 @@ namespace AztecDateTranslator
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
-
+            // EF setup (database)
             builder.Services.AddDbContext<AztecContext>();            
             builder.Services.AddPooledDbContextFactory<AztecContext>(options =>
                 options.UseSqlite($"Data Source={AztecContext.DbPath}"));
 
-            builder.Services.AddTransient<IDateTranslator, DateTranslator>();
-            builder.Services.AddScoped<DateTranslatorVM>();
+            builder.Services.AddTransient<IDateTranslator, DateTranslator>(); // Service
+            builder.Services.AddScoped<DateTranslatorVM>(); // ViewModel
 
             var app = builder.Build();
             using var scope = app.Services.CreateScope();
             using var dbContext = scope.ServiceProvider.GetRequiredService<AztecContext>();
-            dbContext.Initialize();
+            dbContext.Initialize(); // make sure database is created and seeded
             return app;
         }
     }

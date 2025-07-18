@@ -12,6 +12,7 @@ namespace AztecDateTranslator
             BindingContext = viewModel;
             InitializeComponent();
             SetVisibility(DeviceDisplay.Current.MainDisplayInfo.Orientation);
+            // sets panel visibility on change event
             DeviceDisplay.Current.MainDisplayInfoChanged += (_, e)
                 => SetVisibility(e.DisplayInfo.Orientation);
         }
