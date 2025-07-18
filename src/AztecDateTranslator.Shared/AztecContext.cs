@@ -21,7 +21,7 @@ public partial class AztecContext : DbContext
 
     public DbSet<Cempohuallapohualli> Cempohuallapohuallis { get; set; }
 
-    internal static string DbPath => dbPath;
+    public static string DbPath => dbPath;
 
     /// <summary>
     /// on new installs creates db, otherwise, runs updates on existing db file
