@@ -5,7 +5,7 @@ Finds the Tonalpohualli day (moon based) and the Xiuhpōhualli (sun based) dates
 # Screenshots
 
 ## Android
-![Android](./android%20Screenshot%202025-06-27%20175036.png)
+![Android](./screenshots/android%20Screenshot%202025-06-27%20175036.png)
 
 ## Windows
-![Windows](./windows%20Screenshot%202025-06-27%20173908.png)
+![Windows](./screenshots/windows%20Screenshot%202025-06-27%20173908.png)
