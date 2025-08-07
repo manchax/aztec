@@ -53,6 +53,11 @@
                     <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
+
+            <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Label Text="Tonalpohualli/Tzolkin Position:" />
+                <Label Text="{Binding Position}" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

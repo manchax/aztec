@@ -20,6 +20,7 @@ public partial class DateTranslator : BaseViewModel
     [NotifyPropertyChangedFor(nameof(Deity))]
     [NotifyPropertyChangedFor(nameof(DeityDescription))]
     [NotifyPropertyChangedFor(nameof(DeityHorizontal))]
+    [NotifyPropertyChangedFor(nameof(Position))]
     private DateTime _selectedDate = DateTime.Now.Date;
 
     [ObservableProperty]
@@ -70,6 +71,8 @@ public partial class DateTranslator : BaseViewModel
     /// </summary>
     public string DeityHorizontal
         => $"{Tonalpohualli?.DaySign?.AztecDeity} - {Tonalpohualli?.DaySign?.Description}.";
+
+    public int Position => Tonalpohualli?.DayNumber ?? default;
 
     /// <summary>
     /// Changes <see cref="SelectedDate"/> to the previous day.
