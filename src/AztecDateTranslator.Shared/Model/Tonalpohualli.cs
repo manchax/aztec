@@ -24,7 +24,7 @@ The second week started at 1 Ocelotl (1- Jaguar) and the third at 1 Mázatl (1- 
 /// <summary>
 /// Moon based calendar.
 /// </summary>
-public class Tonalpohualli
+public record class Tonalpohualli
 {
     /// <summary>
     /// 1-13

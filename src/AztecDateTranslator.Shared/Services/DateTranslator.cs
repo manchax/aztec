@@ -98,6 +98,7 @@ public class DateTranslator : IDateTranslator
 
     private Tonalpohualli FindDaySign(int position, bool isSpecial)
     {
+        // 13 x 20
         var veintena = 1;
         var trecena = 1;
         for (var i = 1; i < position; i++)
@@ -114,14 +115,13 @@ public class DateTranslator : IDateTranslator
             };
         }
 
-        var sign = _daySigns
-            .Where(d => d.DayNumber == veintena)
-            .First();
+        var daySign = _daySigns
+            .First(d => d.DayNumber == veintena);
 
         return new Tonalpohualli
         {
             HeavenNumber = (byte)trecena,
-            DaySign = sign,
+            DaySign = daySign,
             IsSpecial = isSpecial,
             DayNumber = position,
         };

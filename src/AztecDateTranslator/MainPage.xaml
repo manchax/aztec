@@ -5,7 +5,7 @@
              x:Class="AztecDateTranslator.MainPage"
              x:DataType="vm:DateTranslator">
     <ScrollView>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
+        <VerticalStackLayout Padding="30,0" Spacing="12">
             <Label
                 Text="Pick a Gregorian Date:"
                 Style="{StaticResource Headline}"
@@ -37,10 +37,13 @@
                                    HorizontalOptions="Center" Spacing="5">
                 <Label Text="Aztec Deity: " VerticalOptions="Center" />
                 <Label Text="{Binding DeityHorizontal}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
                 <Label Text="Is Special: " VerticalOptions="Center" />
                 <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
             </HorizontalStackLayout>
-
+            
             <VerticalStackLayout x:Name="PortraitPanel1" 
                                  VerticalOptions="Center" Spacing="5">
                 <HorizontalStackLayout HorizontalOptions="Center">

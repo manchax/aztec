@@ -5,7 +5,7 @@ namespace AztecDateTranslator.Shared.Model;
 /// <summary>
 /// Represents one of the 20 aztec day signs.
 /// </summary>
-public class DaySign : BaseEntity
+public record class DaySign : BaseEntity
 {
     [Key]
     public int ID { get; set; }

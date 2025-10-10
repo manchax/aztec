@@ -1,5 +1,5 @@
 ﻿namespace AztecDateTranslator.Shared.Model;
 
-public abstract class BaseEntity
+public abstract record class BaseEntity
 {
 }
