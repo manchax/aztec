@@ -2,6 +2,8 @@
 
 Finds the Tonalpohualli day (moon based) and the Xiuhpōhualli (sun based) dates of the Aztec calendar using a Gregorian date.
 
+Calculation happens here: [./src/AztecDateTranslator.Shared/Services/DateTranslator.cs]
+
 ## Pieda del Sol Mexica
 
 ![Pieda del Sol](./pics/PiedaSol.png)
