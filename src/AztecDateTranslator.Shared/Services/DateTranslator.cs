@@ -12,6 +12,10 @@ public class DateTranslator : IDateTranslator
     private IEnumerable<DaySign> _daySigns;
     private IEnumerable<Cempohuallapohualli> _months;
 
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    /// <param name="dbContext"></param>
     public DateTranslator(AztecContext dbContext)
     {
         _context = dbContext;
@@ -19,6 +23,13 @@ public class DateTranslator : IDateTranslator
         _months = [.. _context.Cempohuallapohuallis.AsNoTracking()];
     }
 
+    /// <summary>
+    /// Gets the 365 day cycle (solar),
+    /// for specified <paramref name="gregorian"/> date.
+    /// See: <see cref="Model.Cempohuallapohualli"/>.
+    /// </summary>
+    /// <param name="gregorian">The source date.</param>
+    /// <returns></returns>
     public (Cempohuallapohualli mes, int dia)
         Xiuhpohualli(DateTime gregorian)
     {
@@ -57,12 +68,17 @@ public class DateTranslator : IDateTranslator
     }
 
     /// <summary>
-    /// Gets 13x20 = 260 day based calendar, <see cref="Model.Tonalpohualli"/>
-    /// for specified <paramref name="gregorian"/> date.
+    /// The Tonalpohualli was seen as a map of destiny, guiding individuals and communities in harmony with cosmic cycles.
+    /// It is a 260 day cycle (lunar).
     /// </summary>
-    /// <param name="gregorian"></param>
-    /// <returns></returns>
-    /// <exception cref="ArithmeticException"></exception>
+    /// <param name="gregorian">The source date.</param>
+    /// <returns>
+    /// A <see cref="Model.Tonalpohualli"/> instance with Tonalpohualli date info:
+    /// heaven number (1-13) and day sign (0-19)
+    /// </returns>
+    /// <exception cref="ArithmeticException">
+    /// When resulting position is not within valid range (1-260).
+    /// </exception>
     public Tonalpohualli Tonalpohualli(DateTime gregorian)
     {
         var dayCount = GetDayCount(gregorian) / 260m;
