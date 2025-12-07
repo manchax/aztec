@@ -8,9 +8,9 @@ using System.ComponentModel;
 namespace AztecDateTranslator.Shared.ViewModels;
 
 /// <summary>
-/// MainPage ViewModel.
+/// Base ViewModel.
 /// </summary>
-public partial class DateTranslator : BaseViewModel
+public abstract partial class DateTranslator : BaseViewModel
 {
     private readonly IDateTranslator _dateTranslatorSvc;
 
@@ -32,17 +32,14 @@ public partial class DateTranslator : BaseViewModel
         _dateTranslatorSvc = dateTranslatorSvc;
         _tonalpohualli = _dateTranslatorSvc.Tonalpohualli(_selectedDate);
         Previous = new AsyncRelayCommand(() => Task.Run(() =>
-        {
-            SelectedDate = SelectedDate.AddDays(-1);
-        }));
+            SelectedDate = SelectedDate.AddDays(-1)
+        ));
         Next = new AsyncRelayCommand(() => Task.Run(() =>
-        {
-            SelectedDate = SelectedDate.AddDays(1);
-        }));
+            SelectedDate = SelectedDate.AddDays(1)
+        ));
         Current = new AsyncRelayCommand(() => Task.Run(() =>
-        {
-            SelectedDate = DateTime.Now.Date;
-        }));
+            SelectedDate = DateTime.Now.Date
+        ));
     }
 
     /// <summary>
@@ -80,7 +77,8 @@ public partial class DateTranslator : BaseViewModel
     public IAsyncRelayCommand Previous { get; }
 
     /// <summary>
-    /// Changes <see cref="SelectedDate"/> to the current day.
+    /// Changes <see cref="SelectedDate"/> to current computer's date.
+    /// See: <see cref="DateTime.Now"/>.
     /// </summary>
     public IAsyncRelayCommand Current { get; }
 
@@ -91,9 +89,10 @@ public partial class DateTranslator : BaseViewModel
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
+        // when SelectedDate changes, update Tonalpohualli
         if (e.PropertyName == nameof(SelectedDate))
         {
-            // calculate Tonalpohualli based on NEW SelectedDate
+            /// use NEW date <see cref="_selectedDate"/>
             Tonalpohualli = _dateTranslatorSvc.Tonalpohualli(SelectedDate);
             Logger.LogInformation("OnPropertyChanged: {PropertyName} = {SelectedDate}",
                 e.PropertyName, SelectedDate.ToShortDateString());

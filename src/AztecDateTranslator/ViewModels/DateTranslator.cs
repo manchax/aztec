@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using AztecDateTranslator.Shared.Services;
-using BaseTranslator = AztecDateTranslator.Shared.ViewModels.DateTranslator;
 
 namespace AztecDateTranslator.ViewModels;
+
+// Use alias to avoid name conflict
+using BaseTranslator = Shared.ViewModels.DateTranslator;
 
 /// <summary>
 /// Extends ViewModel with new property that's only available from
