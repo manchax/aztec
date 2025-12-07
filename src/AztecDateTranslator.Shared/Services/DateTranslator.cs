@@ -73,6 +73,7 @@ public class DateTranslator : IDateTranslator
             _ => Convert.ToInt32(fraction * 260m)
         };
 
+        // Special days in Tonalpohualli calendar
         int[] specialDays = [
             1, 20,
             22, 39,
