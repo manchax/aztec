@@ -24,13 +24,16 @@ public class DateTranslator : IDateTranslator
     }
 
     /// <summary>
-    /// The Xiuhpohualli is the Aztec solar calendar, a 365-day cycle divided into 18 months of 20 days each,
+    /// The Xiuhpohualli is the Aztec solar calendar,
+    /// a 365-day cycle divided into 18 months of 20 days each,
     /// plus 5 extra “unlucky” days called nemontemi.
-    /// It was used to track agricultural seasons, religious ceremonies, and social life in pre-Columbian central Mexico.
+    /// It was used to track agricultural seasons, religious ceremonies,
+    /// and social life in pre-Columbian central Mexico.
     /// </summary>
     /// <param name="gregorian">The source date.</param>
     /// <returns>
-    /// A tuple with the month (<see cref="Model.Cempohuallapohualli"/>) and a day number (0-19).
+    /// A tuple with the month (<see cref="Model.Cempohuallapohualli"/>)
+    /// and a day number (0-19).
     /// </returns>
     public (Cempohuallapohualli mes, int dia)
         Xiuhpohualli(DateTime gregorian)
@@ -70,8 +73,8 @@ public class DateTranslator : IDateTranslator
     }
 
     /// <summary>
-    /// The Tonalpohualli, a 260-day cycle was seen as a map of destiny, guiding individuals and communities in harmony with cosmic cycles.
-    /// It is a 260 day cycle (lunar).
+    /// The Tonalpohualli, a 260-day cycle was seen as a map of destiny,
+    /// guiding individuals and communities in harmony with cosmic cycles.
     /// </summary>
     /// <param name="gregorian">The source date.</param>
     /// <returns>
