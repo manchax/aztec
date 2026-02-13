@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace AztecDateTranslator.Shared.Services;
 
+using XiuhpohualliDate = (Cempohuallapohualli mes, int dia);
+
 public class DateTranslator : IDateTranslator
 {
     private AztecContext _context;
@@ -35,8 +37,7 @@ public class DateTranslator : IDateTranslator
     /// A tuple with the month (<see cref="Model.Cempohuallapohualli"/>)
     /// and a day number (0-19).
     /// </returns>
-    public (Cempohuallapohualli mes, int dia)
-        Xiuhpohualli(DateTime gregorian)
+    public XiuhpohualliDate Xiuhpohualli(DateTime gregorian)
     {
         var dayCount = GetDayCount(gregorian, tzolkin: false);
         Debug.WriteLine($"Day Count is {dayCount}");
