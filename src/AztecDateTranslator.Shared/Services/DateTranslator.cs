@@ -4,14 +4,26 @@ using System.Diagnostics;
 
 namespace AztecDateTranslator.Shared.Services;
 
+/// A tuple with month and day in solar calendar.
 using XiuhpohualliDate = (Cempohuallapohualli mes, int dia);
 
+/// <summary>
+/// Provides methods for translating Gregorian dates to their corresponding dates
+/// in the mesoamerican calendar, including:
+/// the Xiuhpohualli (solar) and Tonalpohualli (lunar).
+/// </summary>
+/// <remarks>
+/// This class enables conversion between standard Gregorian dates and mesoamerican calendar systems.
+/// It supports both:
+/// - the 365-day Xiuhpohualli cycle (solar)
+/// - the 260-day Tonalpohualli cycles (lunar)
+/// </remarks>
 public class DateTranslator : IDateTranslator
 {
+    private static readonly DateTime Zero = new(1900, 1, 1);
     private AztecContext _context;
 
-    private static readonly DateTime Zero = new(1900, 1, 1);
-    private IEnumerable<DaySign> _daySigns;
+    private IEnumerable<DaySign> _days;
     private IEnumerable<Cempohuallapohualli> _months;
 
     /// <summary>
@@ -21,7 +33,7 @@ public class DateTranslator : IDateTranslator
     public DateTranslator(AztecContext dbContext)
     {
         _context = dbContext;
-        _daySigns = [.. _context.DaySigns.AsNoTracking()];
+        _days = [.. _context.DaySigns.AsNoTracking()];
         _months = [.. _context.Cempohuallapohuallis.AsNoTracking()];
     }
 
@@ -122,8 +134,8 @@ public class DateTranslator : IDateTranslator
     private Tonalpohualli FindDaySign(int position, bool isSpecial)
     {
         // 13 x 20
-        var veintena = 1;
-        var trecena = 1;
+        var veintena = 1; // how many 20s?
+        var trecena = 1; // how many 13s?
         for (var i = 1; i < position; i++)
         {
             trecena = trecena switch
@@ -138,7 +150,7 @@ public class DateTranslator : IDateTranslator
             };
         }
 
-        var daySign = _daySigns
+        var daySign = _days
             .First(d => d.DayNumber == veintena);
 
         return new Tonalpohualli
