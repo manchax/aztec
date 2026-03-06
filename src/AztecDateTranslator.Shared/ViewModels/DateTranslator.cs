@@ -21,6 +21,7 @@ public abstract partial class DateTranslator : BaseViewModel
     [NotifyPropertyChangedFor(nameof(DeityDescription))]
     [NotifyPropertyChangedFor(nameof(DeityHorizontal))]
     [NotifyPropertyChangedFor(nameof(Position))]
+    [NotifyPropertyChangedFor(nameof(DaySignSpanish))]
     private DateTime _selectedDate = DateTime.Now.Date;
 
     [ObservableProperty]
