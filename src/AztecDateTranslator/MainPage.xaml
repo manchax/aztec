@@ -30,6 +30,9 @@
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
 
+            <Label Text="{Binding DaySignSpanish}"
+                   HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
             <HorizontalStackLayout x:Name="LandscapePanel1" 
                                    HorizontalOptions="Center" Spacing="5">
                 <Label Text="Aztec Deity: " VerticalOptions="Center" />
@@ -40,7 +43,7 @@
                 <Label Text="Is Special: " VerticalOptions="Center" />
                 <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
             </HorizontalStackLayout>
-            
+
             <VerticalStackLayout x:Name="PortraitPanel1" 
                                  VerticalOptions="Center" Spacing="5">
                 <HorizontalStackLayout HorizontalOptions="Center">

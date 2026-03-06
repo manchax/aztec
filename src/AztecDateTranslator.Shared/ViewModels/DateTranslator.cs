@@ -60,6 +60,8 @@ public abstract partial class DateTranslator : BaseViewModel
     /// </summary>
     public string Deity => Tonalpohualli?.DaySign?.AztecDeity ?? "";
 
+    public string DaySignSpanish => Tonalpohualli?.DaySign?.Spanish ?? "";
+
     /// <summary>
     /// Aztec deity description.
     /// </summary>
