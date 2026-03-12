@@ -52,7 +52,7 @@
                 </HorizontalStackLayout>
                 <Label Text="{Binding DeityDescription}" HorizontalOptions="Center" />
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label Text="Is Special: " VerticalOptions="Center" />
+                    <Label Text="Is Special? " VerticalOptions="Center" />
                     <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
