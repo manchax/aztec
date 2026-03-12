@@ -40,7 +40,7 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                <Label Text="Is Special: " VerticalOptions="Center" />
+                <Label Text="Is Special? " VerticalOptions="Center" />
                 <Label Text="{Binding IsSpecial}" VerticalOptions="Center" />
             </HorizontalStackLayout>
 
