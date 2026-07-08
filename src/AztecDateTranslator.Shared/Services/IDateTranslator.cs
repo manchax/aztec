@@ -3,7 +3,8 @@ using AztecDateTranslator.Shared.Model;
 namespace AztecDateTranslator.Shared.Services;
 
 /// <summary>
-/// Translates a Gregorian date to Tonalpohualli or Xiuhpohualli.
+/// Translates a Gregorian date to Tonalpohualli
+/// or Xiuhpohualli (needs to be fixed).
 /// </summary>
 public interface IDateTranslator
 {
