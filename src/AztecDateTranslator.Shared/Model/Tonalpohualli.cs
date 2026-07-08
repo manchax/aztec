@@ -42,7 +42,7 @@ public record class Tonalpohualli
     public int DayNumber { get; set; }
 
     /// <summary>
-    /// Special days are considered more energetic.
+    /// Special days are considered more energetic (:D    
     /// </summary>
     public bool IsSpecial { get; set; }
 }
