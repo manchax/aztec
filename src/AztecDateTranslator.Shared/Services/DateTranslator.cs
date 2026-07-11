@@ -103,12 +103,12 @@ public class DateTranslator : IDateTranslator
         var fraction = dayCount - decimal.Truncate(dayCount);
         var position = fraction switch
         {
-            0 => 260,
-            _ => Convert.ToInt32(fraction * 260m)
+            0 => (ushort)260,
+            _ => Convert.ToUInt16(fraction * 260m)
         };
 
         // Special days in Tonalpohualli calendar
-        int[] specialDays = [
+        ushort[] specialDays = [
             1, 20,
             22, 39,
             43, 50, 51, 58,
@@ -131,7 +131,7 @@ public class DateTranslator : IDateTranslator
         return FindDaySign(position, specialDays.Contains(position));
     }
 
-    private Tonalpohualli FindDaySign(int position, bool isSpecial)
+    private Tonalpohualli FindDaySign(ushort position, bool isSpecial)
     {
         // 13 x 20
         var veintena = 1; // how many 20s?

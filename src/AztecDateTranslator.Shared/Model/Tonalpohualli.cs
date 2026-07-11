@@ -39,10 +39,10 @@ public record class Tonalpohualli
     /// <summary>
     /// The position within the cycle (1-260)
     /// </summary>
-    public int DayNumber { get; set; }
+    public ushort DayNumber { get; set; }
 
     /// <summary>
-    /// Special days are considered more energetic (:D    
+    /// Special days are considered more energetic (:D
     /// </summary>
     public bool IsSpecial { get; set; }
 }
