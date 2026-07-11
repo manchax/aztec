@@ -39,7 +39,7 @@ namespace AztecDateTranslator
             builder.Logging.AddDebug();
 #endif
             // EF setup (database)
-            builder.Services.AddDbContext<AztecContext>();            
+            builder.Services.AddDbContext<AztecContext>();
             builder.Services.AddPooledDbContextFactory<AztecContext>(options =>
                 options.UseSqlite($"Data Source={AztecContext.DbPath}"));
 
