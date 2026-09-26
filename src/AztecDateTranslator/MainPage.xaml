@@ -5,13 +5,11 @@
         <VerticalStackLayout Padding="30,0" Spacing="12">
             <Label
                 Text="Pick a Gregorian Date:"
-                Style="{StaticResource Headline}"
+                Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level1" />
             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                <Label Text="Date:" 
-                       Style="{StaticResource SubHeadline}"
+                <Label Style="{StaticResource SubHeadline}"
                        VerticalOptions="Center" />
-
                 <DatePicker Date="{Binding SelectedDate}"
                             VerticalOptions="Center" />
             </HorizontalStackLayout>

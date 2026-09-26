@@ -47,9 +47,9 @@ public abstract partial class DateTranslator : BaseViewModel
     /// Text description of the Tonalpohualli date.
     /// </summary>
     public string TonalpohualliLabel =>
-        $"Tonalpohualli: {Tonalpohualli?.HeavenNumber}" +
-        $" {Tonalpohualli?.DaySign?.Nahuatl}" +
-        $" ({Tonalpohualli?.DaySign?.Maya}) ";
+        $"Tonalpohualli: {Tonalpohualli?.HeavenNumber} " +
+        $"{Tonalpohualli?.DaySign?.Nahuatl} (náhuatl), " +
+        $"{Tonalpohualli?.DaySign?.Maya} (maya)";
 
     /// <summary>
     /// Special days are considered more energetic.
