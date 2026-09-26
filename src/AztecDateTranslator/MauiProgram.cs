@@ -17,6 +17,9 @@ namespace AztecDateTranslator
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+#if !ANDROID && !IOS && !MACCATALYST && !WINDOWS
+                .UseAvaloniaApp()
+#endif
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

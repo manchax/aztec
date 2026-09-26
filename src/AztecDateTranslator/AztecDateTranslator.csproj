@@ -1,18 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.26100.0</TargetFrameworks>
+		<TargetFrameworks>net11.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net11.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net11.0-windows10.0.26100.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
-
-		<!-- Note for MacCatalyst:
-		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
-		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
-		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
-		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
-		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
-
+		
+		<!-- Avalonia desktop head (Windows, macOS, and Linux) -->
+		<TargetFrameworks>net11.0;$(TargetFrameworks)</TargetFrameworks>
+		
 		<OutputType>Exe</OutputType>
 		<RootNamespace>AztecDateTranslator</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -46,16 +43,13 @@
 	<!-- Enable implicit namespaces -->
 	<PropertyGroup>
 		<DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
-		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 		<NoWarn>$(NoWarn);CA2252</NoWarn>
+		<!-- Enable XAML Source Generation -->
+		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
-	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-windows10.0.26100.0|AnyCPU'">
-	  <DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net11.0-android|AnyCPU'">
+	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -77,10 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.80" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.9" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="10.7.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.8.0" />
 		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+		<PackageReference Include="Avalonia.Controls.Maui" Version="11.0.0-preview.7.*" />
+		<PackageReference Include="Avalonia.Controls.Maui.Desktop" Version="11.0.0-preview.7.*" Condition="'$(TargetFramework)' == 'net11.0'" />
 	</ItemGroup>
 
 	<ItemGroup>
