@@ -17,9 +17,12 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                <Button Text="&#x25C0; Previous" Command="{Binding Previous}" />
-                <Button Text="&#x25BC; Current" Command="{Binding Current}" />
-                <Button Text="Next &#x25B6;" Command="{Binding Next}" />
+                <Button Text="&#x25C0; Previous" Command="{Binding Previous}"
+                        Style="{StaticResource YellowButton}" />
+                <Button Text="&#x25BC; Current" Command="{Binding Current}"
+                        Style="{StaticResource GreenButton}" />
+                <Button Text="Next &#x25B6;" Command="{Binding Next}"
+                        Style="{StaticResource YellowButton}" />
             </HorizontalStackLayout>
 
             <Label Text="{Binding TonalpohualliLabel}"
