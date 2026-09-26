@@ -21,17 +21,16 @@ public class DateTranslator(IDateTranslator dateTranslator,
     /// Image for the Tonalpohualli day sign.
     /// </summary>
     /// <remarks>
-    /// Used as binding property in
-    /// line 31 in <see href="../MainPage.xaml" />
+    /// Used as binding property in <see href="../MainPage.xaml" />
     /// </remarks>
-    public string ImageSource => Tonalpohualli?.DaySign?.GetImage() ?? "";
+    public string DaySignImage => Tonalpohualli?.DaySign?.GetImage() ?? "";
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Tonalpohualli))
         {
             // update the image
-            OnPropertyChanged(nameof(ImageSource));
+            OnPropertyChanged(nameof(DaySignImage));
         }
         base.OnPropertyChanged(e);
     }

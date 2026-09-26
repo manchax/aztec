@@ -25,7 +25,7 @@
             <Label Text="{Binding TonalpohualliLabel}"
                    Style="{StaticResource Headline}" />
             <Image
-                Source="{Binding ImageSource}"
+                Source="{Binding DaySignImage}"
                 HeightRequest="192"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Day Sign" />
