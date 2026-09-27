@@ -141,7 +141,7 @@ public partial class AztecContext
             Nagual = Naguales.Ocelot,
             Nahuatl = "Ocelotl",
             Maya = "Ix",
-            Spanish = "Ocelote",
+            Spanish = "Ocelote o Jaguar",
             English = "Ocelot",
             AztecDeity = "Tlacolteotl",
             Description = "diosa del amor y del nacimiento"
@@ -179,7 +179,7 @@ public partial class AztecContext
         new DaySign {
             DayNumber = 18,
             Nagual = Naguales.Knife,
-            Nahuatl = "Tecpatl",
+            Nahuatl = "Técpatl",
             Maya = "Etznab",
             Spanish = "Cuchillo",
             English = "Knife",

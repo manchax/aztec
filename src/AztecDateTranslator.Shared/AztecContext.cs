@@ -1,5 +1,6 @@
 ﻿using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace AztecDateTranslator.Shared;
 
@@ -13,7 +14,12 @@ public partial class AztecContext : DbContext
     static AztecContext()
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
+        var path = Path.Combine(Environment.GetFolderPath(folder),
+            Assembly.GetEntryAssembly()!.GetName().Name!);
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
         dbPath = Path.Join(path, "aztec.db");
     }
 

@@ -15,6 +15,7 @@ namespace AztecDateTranslator
             // sets panel visibility on change event
             DeviceDisplay.Current.MainDisplayInfoChanged += (_, e)
                 => SetVisibility(e.DisplayInfo.Orientation);
+            Loaded += async (s, e) => await viewModel.DescribeDayAloud();
         }
 
         private void SetVisibility(DisplayOrientation orientation)

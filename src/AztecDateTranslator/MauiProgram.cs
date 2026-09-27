@@ -2,6 +2,8 @@
 using AztecDateTranslator.Shared.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
+
 #if DEBUG && WINDOWS
 using Microsoft.Maui.LifecycleEvents;
 using System.Diagnostics;
@@ -14,6 +16,9 @@ namespace AztecDateTranslator
     {
         public static MauiApp CreateMauiApp()
         {
+            var esMX = CultureInfo.GetCultureInfo("es-MX");
+            CultureInfo.CurrentCulture = esMX;
+            CultureInfo.CurrentUICulture = esMX;
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
