@@ -50,14 +50,38 @@ public partial class AztecContext : DbContext
             .EnableSensitiveDataLogging()
             .UseSeeding((context, _) =>
             {
-                AddDaySigns(context.Set<DaySign>());
-                AddCempohuallapohuallis(context.Set<Cempohuallapohualli>());
+                var daySigns = context.Set<DaySign>();
+                var cempohuallis = context.Set<Cempohuallapohualli>();
+                if (daySigns.Count() != 20)
+                {
+                    daySigns.ExecuteDelete();
+                    AddDaySigns(daySigns);
+                }
+
+                if (cempohuallis.Count() != 19)
+                {
+                    cempohuallis.ExecuteDelete();
+                    AddCempohuallapohuallis(cempohuallis);
+                }
+
                 context.SaveChanges();
             })
             .UseAsyncSeeding(async (context, _, cancellationToken) =>
             {
-                await AddDaySignsAsync(context.Set<DaySign>());
-                await AddCempohuallapohuallisAsync(context.Set<Cempohuallapohualli>());
+                var daySigns = context.Set<DaySign>();
+                var cempohuallis = context.Set<Cempohuallapohualli>();
+                if (await daySigns.CountAsync(cancellationToken) != 20)
+                {
+                    await daySigns.ExecuteDeleteAsync(cancellationToken);
+                    await AddDaySignsAsync(daySigns, cancellationToken);
+                }
+
+                if (await cempohuallis.CountAsync(cancellationToken) != 19)
+                {
+                    await cempohuallis.ExecuteDeleteAsync(cancellationToken);
+                    await AddCempohuallapohuallisAsync(cempohuallis, cancellationToken);
+                }
+
                 await context.SaveChangesAsync(cancellationToken);
             });
 

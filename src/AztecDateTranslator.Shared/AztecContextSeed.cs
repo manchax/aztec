@@ -328,12 +328,14 @@ public partial class AztecContext
     private void AddDaySigns(DbSet<DaySign> dbSet)
         => dbSet.AddRange(_signs);
 
-    private async Task AddDaySignsAsync(DbSet<DaySign> dbSet)
-        => await dbSet.AddRangeAsync(_signs);
+    private async Task AddDaySignsAsync(DbSet<DaySign> dbSet,
+        CancellationToken cancellationToken) => 
+            await dbSet.AddRangeAsync(_signs, cancellationToken);
 
     private void AddCempohuallapohuallis(DbSet<Cempohuallapohualli> dbSet)
         => dbSet.AddRange(_months);
 
-    private async Task AddCempohuallapohuallisAsync(DbSet<Cempohuallapohualli> dbSet)
-        => await dbSet.AddRangeAsync(_months);
+    private async Task AddCempohuallapohuallisAsync(DbSet<Cempohuallapohualli> dbSet,
+        CancellationToken cancellationToken) => 
+            await dbSet.AddRangeAsync(_months, cancellationToken);
 }
