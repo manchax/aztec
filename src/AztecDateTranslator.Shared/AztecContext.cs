@@ -15,7 +15,7 @@ public partial class AztecContext : DbContext
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Path.Combine(Environment.GetFolderPath(folder),
-            Assembly.GetEntryAssembly()!.GetName().Name!);
+            "AztecDateTranslator");
         if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
