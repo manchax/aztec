@@ -1,10 +1,7 @@
-﻿using Avalonia.Logging;
-using AztecDateTranslator.Shared.Services;
-using Humanizer;
+﻿using AztecDateTranslator.Shared.Services;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 
 namespace AztecDateTranslator.ViewModels;
 
