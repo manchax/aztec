@@ -46,11 +46,7 @@ namespace AztecDateTranslator
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            // EF setup (database)
-            builder.Services.AddDbContext<AztecContext>();
-            //builder.Services.AddDbContextFactory<AztecContext>(options =>
-            //    options.UseSqlite($"Data Source={AztecContext.DbPath}"));
-
+            builder.Services.AddDbContext<AztecContext>(); // EF setup (database)
             builder.Services.AddTransient<IDateTranslator, DateTranslator>(); // Service
             builder.Services.AddScoped<DateTranslatorVM>(); // ViewModel
 
