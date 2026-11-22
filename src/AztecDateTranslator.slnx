@@ -1,5 +1,10 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../.gitlab-ci.yml" />
+  </Folder>
   <Project Path="AztecDateTranslator.Console/AztecDateTranslator.Console.csproj" />
   <Project Path="AztecDateTranslator.Shared/AztecDateTranslator.Shared.csproj" />
-  <Project Path="AztecDateTranslator/AztecDateTranslator.csproj" />
+  <Project Path="AztecDateTranslator/AztecDateTranslator.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
