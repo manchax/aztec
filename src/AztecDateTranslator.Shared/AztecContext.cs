@@ -1,5 +1,6 @@
 ﻿using AztecDateTranslator.Shared.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace AztecDateTranslator.Shared;
 
@@ -46,6 +47,7 @@ public partial class AztecContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         options.UseSqlite($"Data Source={dbPath}")
+            .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.MigrationsNotFound))
             .EnableSensitiveDataLogging()
             .UseSeeding((context, _) =>
             {
