@@ -4,7 +4,7 @@
 # running the following batch command: net use P: \\x.x.x.x\Projects /u:your_user your_pass /persistent:yes
 
 variables:
-    PACKAGES_DIR: ..\.nuget
+    PACKAGES_DIR: 'C:\Users\manchax\.nuget'
     SOLUTION_FILE: src\AztecDateTranslator.slnx
     RELEASE_DIR: src\AztecDateTranslator.Console\bin\Release\net10.0
     CONSOLE_TAR: console.tar.xz
